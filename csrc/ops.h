@@ -1,7 +1,7 @@
 #pragma once
 
 #include <torch/extension.h>
-
+#define MAX_TPC 42 
 void paged_attention_v1(
   torch::Tensor& out,
   torch::Tensor& query,
@@ -14,7 +14,8 @@ void paged_attention_v1(
   int block_size,
   int max_context_len,
   const c10::optional<torch::Tensor>& alibi_slopes,
-  const std::string& kv_cache_dtype);
+  const std::string& kv_cache_dtype,
+  int allocated_tpc = MAX_TPC);
 
 void paged_attention_v2(
   torch::Tensor& out,
@@ -31,7 +32,8 @@ void paged_attention_v2(
   int block_size,
   int max_context_len,
   const c10::optional<torch::Tensor>& alibi_slopes,
-  const std::string& kv_cache_dtype);
+  const std::string& kv_cache_dtype,
+  int allocated_tpc = MAX_TPC);
 
 void rms_norm(
   torch::Tensor& out,

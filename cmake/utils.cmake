@@ -327,8 +327,15 @@ function (define_gpu_extension_target GPU_MOD_NAME)
   target_include_directories(${GPU_MOD_NAME} PRIVATE csrc
     ${GPU_INCLUDE_DIRECTORIES})
 
-  target_link_libraries(${GPU_MOD_NAME} PRIVATE ${TORCH_LIBRARIES}
-    ${GPU_LIBRARIES})
+  find_library(SMCTRL_LIB NAMES libsmctrl.a PATHS /workspace/vllm/libsmctrl)
+
+  if (NOT SMCTRL_LIB)
+    message(FATAL_ERROR "libsmctrl.a not found in /workspace/vllm/libsmctrl")
+  endif()
+
+  list(APPEND GPU_LIBRARIES ${SMCTRL_LIB})
+
+  target_link_libraries(${GPU_MOD_NAME} PRIVATE ${TORCH_LIBRARIES} ${GPU_LIBRARIES})
 
   install(TARGETS ${GPU_MOD_NAME} LIBRARY DESTINATION ${GPU_DESTINATION})
 endfunction()
