@@ -60,7 +60,7 @@ class cmake_build_ext(build_ext):
             num_jobs = len(os.sched_getaffinity(0))
         except AttributeError:
             num_jobs = os.cpu_count()
-        num_jobs = 4
+        num_jobs = 8
         nvcc_threads = None
         if _is_cuda():
             nvcc_cuda_version = get_nvcc_cuda_version()

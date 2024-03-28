@@ -2,7 +2,7 @@ import csv
 import matplotlib.pyplot as plt
 
 # 读取CSV文件并删除每个数据开头的'.'
-with open('result_llama13b.csv', 'r') as file:
+with open('result_llama13bV2.csv', 'r') as file:
     reader = csv.reader(file, delimiter=' ')
     data = [[float(row[0][1:]), int(row[1]), int(row[2])] for row in reader]
 
@@ -17,16 +17,16 @@ for row in data:
     data_by_requests[row[1]].append(row)
 
 # 筛选request数量为100的数据
-request_100_data = data_by_requests[80]
+request_100_data = data_by_requests[100]
 
 # 绘制图形
 x = [row[2] for row in request_100_data]
 y = [row[0] for row in request_100_data]  # 转换为微秒
-plt.plot(x, y, marker='o', linestyle='-', label=f'80 requests')
+plt.plot(x, y, marker='o', linestyle='-', label=f'100 requests')
 
 plt.xlabel('Number of Computing Resources')
 plt.ylabel('Running Time (microseconds)')
 plt.legend()
 plt.show()
 #save
-plt.savefig('draw80.png')
+plt.savefig('draw100V2.png')

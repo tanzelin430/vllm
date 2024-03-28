@@ -354,70 +354,70 @@ def ref_multi_query_kv_attention(
 
 
 # TODO(woosuk): Add tests for USE_ALIBI=True.
-# @pytest.mark.parametrize("num_seqs", NUM_PREFILL_SEQS)
-# @pytest.mark.parametrize("num_heads", NUM_HEADS)
-# @pytest.mark.parametrize("head_size", HEAD_SIZES)
-# @pytest.mark.parametrize("dtype", DTYPES)
-# @pytest.mark.parametrize("seed", SEEDS)
-# @pytest.mark.parametrize("device", CUDA_DEVICES)
-# @torch.inference_mode()
-# def test_multi_query_kv_attention(
-#     num_seqs: int,
-#     num_heads: Tuple[int, int],
-#     head_size: int,
-#     dtype: torch.dtype,
-#     seed: int,
-#     device: str,
-# ) -> None:
-#     random.seed(seed)
-#     torch.random.manual_seed(seed)
-#     if torch.cuda.is_available():
-#         torch.cuda.manual_seed(seed)
-#     torch.set_default_device(device)
-#     # MAX_SEQ_LEN sometimes causes OOM in the reference implementation.
-#     # As the xformers library is already tested with its own tests, we can use
-#     # a smaller MAX_SEQ_LEN here.
-#     max_len = min(MAX_SEQ_LEN, 4096)
-#     seq_lens = random.sample(range(1, max_len), num_seqs)
-#     num_tokens = sum(seq_lens)
+@pytest.mark.parametrize("num_seqs", NUM_PREFILL_SEQS)
+@pytest.mark.parametrize("num_heads", NUM_HEADS)
+@pytest.mark.parametrize("head_size", HEAD_SIZES)
+@pytest.mark.parametrize("dtype", DTYPES)
+@pytest.mark.parametrize("seed", SEEDS)
+@pytest.mark.parametrize("device", CUDA_DEVICES)
+@torch.inference_mode()
+def test_multi_query_kv_attention(
+    num_seqs: int,
+    num_heads: Tuple[int, int],
+    head_size: int,
+    dtype: torch.dtype,
+    seed: int,
+    device: str,
+) -> None:
+    random.seed(seed)
+    torch.random.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+    torch.set_default_device(device)
+    # MAX_SEQ_LEN sometimes causes OOM in the reference implementation.
+    # As the xformers library is already tested with its own tests, we can use
+    # a smaller MAX_SEQ_LEN here.
+    max_len = min(MAX_SEQ_LEN, 4096)
+    seq_lens = random.sample(range(1, max_len), num_seqs)
+    num_tokens = sum(seq_lens)
 
-#     scale = float(1.0 / (head_size**0.5))
-#     num_query_heads, num_kv_heads = num_heads
-#     qkv = torch.empty(num_tokens,
-#                       num_query_heads + 2 * num_kv_heads,
-#                       head_size,
-#                       dtype=dtype)
-#     qkv.uniform_(-scale, scale)
-#     query, key, value = qkv.split(
-#         [num_query_heads, num_kv_heads, num_kv_heads], dim=1)
+    scale = float(1.0 / (head_size**0.5))
+    num_query_heads, num_kv_heads = num_heads
+    qkv = torch.empty(num_tokens,
+                      num_query_heads + 2 * num_kv_heads,
+                      head_size,
+                      dtype=dtype)
+    qkv.uniform_(-scale, scale)
+    query, key, value = qkv.split(
+        [num_query_heads, num_kv_heads, num_kv_heads], dim=1)
 
-#     num_queries_per_kv = num_query_heads // num_kv_heads
-#     if num_queries_per_kv > 1:
-#         # Handle MQA and GQA
-#         key = torch.repeat_interleave(key, num_queries_per_kv, dim=1)
-#         value = torch.repeat_interleave(value, num_queries_per_kv, dim=1)
-#     attn_bias = BlockDiagonalCausalMask.from_seqlens(seq_lens)
-#     output = xops.memory_efficient_attention_forward(
-#         query.unsqueeze(0),
-#         key.unsqueeze(0),
-#         value.unsqueeze(0),
-#         attn_bias=attn_bias,
-#         p=0.0,
-#         scale=scale,
-#     )
-#     output = output.squeeze(0)
+    num_queries_per_kv = num_query_heads // num_kv_heads
+    if num_queries_per_kv > 1:
+        # Handle MQA and GQA
+        key = torch.repeat_interleave(key, num_queries_per_kv, dim=1)
+        value = torch.repeat_interleave(value, num_queries_per_kv, dim=1)
+    attn_bias = BlockDiagonalCausalMask.from_seqlens(seq_lens)
+    output = xops.memory_efficient_attention_forward(
+        query.unsqueeze(0),
+        key.unsqueeze(0),
+        value.unsqueeze(0),
+        attn_bias=attn_bias,
+        p=0.0,
+        scale=scale,
+    )
+    output = output.squeeze(0)
 
-#     cu_seq_lens = [0]
-#     for seq_len in seq_lens:
-#         cu_seq_lens.append(cu_seq_lens[-1] + seq_len)
-#     ref_output = ref_multi_query_kv_attention(
-#         cu_seq_lens,
-#         query,
-#         key,
-#         value,
-#         scale,
-#         dtype,
-#     )
-#     atol = get_default_atol(output) if is_hip() else 1e-3
-#     rtol = get_default_rtol(output) if is_hip() else 1e-5
-#     assert torch.allclose(output, ref_output, atol=atol, rtol=rtol)
+    cu_seq_lens = [0]
+    for seq_len in seq_lens:
+        cu_seq_lens.append(cu_seq_lens[-1] + seq_len)
+    ref_output = ref_multi_query_kv_attention(
+        cu_seq_lens,
+        query,
+        key,
+        value,
+        scale,
+        dtype,
+    )
+    atol = get_default_atol(output) if is_hip() else 1e-3
+    rtol = get_default_rtol(output) if is_hip() else 1e-5
+    assert torch.allclose(output, ref_output, atol=atol, rtol=rtol)
