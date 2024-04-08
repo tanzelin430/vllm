@@ -1,0 +1,114 @@
+import ctypes, ctypes.util
+import os
+import torch
+from typing import Optional
+# If this is failing, make sure that the directory containing libsmctrl.so is
+# in your LD_LIBRARY_PATH environment variable. You likely need something like:
+# LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/playpen/jbakita/gpu_subdiv/libsmctrl/
+# libsmctrl_path = ctypes.util.find_library("libsmctrl")
+#get current absolute path'
+current_path = os.path.abspath(__file__)
+
+libsmctrl_path = "/workspace/vllm/thirdparty/libsmctrl/libsmctrl.so"
+print("pysmctrl: Using default path to libsmctrl.so: %s"%libsmctrl_path)
+libsmctrl = ctypes.CDLL(libsmctrl_path)
+
+def get_gpc_info(device_num):
+    """
+    Obtain list of thread processing clusters (TPCs) enabled for each general
+    processing cluster (GPC) in the specified GPU.
+
+    Parameters
+    ----------
+    device_num : int
+        Which device to obtain information for (starts as 0, order is defined
+        by nvdebug module). May not match CUDA device numbering.
+
+    Returns
+    -------
+    list of int64
+        A list as long as the number of GPCs enabled, where each list entry is
+        a bitmask. A bit set at index `i` indicates that TPC `i` is part of the
+        GPC at that list index. Obtained via GPU register reads in `nvdebug`.
+    """
+    num_gpcs = ctypes.c_uint()
+    tpc_masks = ctypes.pointer(ctypes.c_ulonglong())
+    res = libsmctrl.libsmctrl_get_gpc_info(ctypes.byref(num_gpcs), ctypes.byref(tpc_masks), device_num)
+    if res != 0:
+        print("pysmctrl: Unable to call libsmctrl_get_gpc_info(). Raising error %d..."%res)
+        raise OSError(res, os.strerror(res))
+    return [tpc_masks[i] for i in range(num_gpcs.value)]
+
+def get_tpc_info(device_num):
+    """
+    Obtain a count of the total number of thread processing clusters (TPCs)
+    enabled on the specified GPU.
+
+    Parameters
+    ----------
+    device_num : int
+        Which device to obtain TPC count for (starts as 0, order is defined by
+        `nvdebug` module). May not match CUDA device numbering.
+
+    Returns
+    -------
+    int
+        Count of enabled TPCs. Obtained via GPU register reads in `nvdebug`.
+    """
+    num_tpcs = ctypes.c_uint()
+    res = libsmctrl.libsmctrl_get_tpc_info(ctypes.byref(num_tpcs), device_num)
+    if res != 0:
+        print("pysmctrl: Unable to call libsmctrl_get_tpc_info(). Raising error %d..."%res)
+        raise OSError(res, os.strerror(res))
+    return num_tpcs.value
+
+def get_tpc_info_cuda(device_num):
+    """
+    Obtain a count of the total number of thread processing clusters (TPCs)
+    enabled on the specified GPU.
+
+    Parameters
+    ----------
+    device_num : int
+        Which device to obtain TPC count for, as a CUDA device ID.
+
+    Returns
+    -------
+    int
+        Count of enabled TPCs. Obtained via calculations on data from CUDA.
+    """
+    num_tpcs = ctypes.c_uint()
+    res = libsmctrl.libsmctrl_get_tpc_info_cuda(ctypes.byref(num_tpcs), device_num)
+    if res != 0:
+        print("pysmctrl: Unable to call libsmctrl_get_tpc_info_cuda(). Raising error %d..."%res)
+        raise OSError(res, os.strerror(res))
+    return num_tpcs.value
+
+def generate_mask(n: int, shift: Optional[int] = 0):
+    """
+    Generate a mask with n consecutive unset bits and a shift.
+
+    Parameters
+    ----------
+    n : int
+        The number of consecutive unset bits in the mask.
+    shift : int
+        The number of bits to shift the unset bits.
+
+    Returns
+    -------
+    int
+        The mask value with n consecutive unset bits and a shift.
+    """
+    mask_with_zeros = (int('1' * n, 2) << shift)
+    mask = ~mask_with_zeros
+
+    if mask < 0:
+        mask = mask & ((1 << 64) - 1)
+
+    return mask
+
+def set_stream_mask(torch_stream: torch.cuda.Stream , mask):
+    # original c function prototype:extern void libsmctrl_set_stream_mask(void* stream, uint64_t mask);
+    stream_ptr = ctypes.c_void_p(torch_stream.cuda_stream)
+    libsmctrl.libsmctrl_set_stream_mask(stream_ptr, ctypes.c_uint64(mask))

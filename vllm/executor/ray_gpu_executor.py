@@ -266,7 +266,7 @@ class RayGPUExecutor(ExecutorBase):
                 "blocks_to_copy": blocks_to_copy,
             },
             use_ray_compiled_dag=USE_RAY_COMPILED_DAG)
-
+        print("called in ray gpu exec")
         # Only the driver worker returns the sampling results.
         output = all_outputs[0]
         return output

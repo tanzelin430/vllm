@@ -269,7 +269,7 @@ class NeuronModelRunner:
             positions=input_positions,
             input_block_ids=input_block_ids,
         )
-
+        print("called in neuron model runner")
         # Compute the logits.
         logits = self.model.compute_logits(hidden_states, sampling_metadata)
 

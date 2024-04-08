@@ -1,12 +1,12 @@
 from abc import ABC, abstractmethod
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Union
 
 from vllm.config import (CacheConfig, DeviceConfig, LoRAConfig, ModelConfig,
                          ParallelConfig, SchedulerConfig, VisionLanguageConfig)
 from vllm.lora.request import LoRARequest
 from vllm.sequence import SamplerOutput, SequenceGroupMetadata
 
-
+import torch
 class ExecutorBase(ABC):
     """Base class for all executors.
 
@@ -28,12 +28,15 @@ class ExecutorBase(ABC):
     ) -> None:
         raise NotImplementedError
 
+
     @abstractmethod
     def execute_model(self,
-                      seq_group_metadata_list: List[SequenceGroupMetadata],
-                      blocks_to_swap_in: Dict[int, int],
-                      blocks_to_swap_out: Dict[int, int],
-                      blocks_to_copy: Dict[int, List[int]]) -> SamplerOutput:
+                    #NOTE(tanzelin430): After parallel computing for decode and prefill is fully deployed, we can remove the Union type
+                    seq_group_metadata_list: Union[List[SequenceGroupMetadata], Dict[str, List[SequenceGroupMetadata]]],
+                    blocks_to_swap_in: Dict[int, int],
+                    blocks_to_swap_out: Dict[int, int],
+                    blocks_to_copy: Dict[int, List[int]],
+                    cuda_stream_pool: List[torch.cuda.Stream]) -> SamplerOutput:
         """Executes one model step on the given sequences."""
         raise NotImplementedError
 

@@ -22,7 +22,7 @@ def post_http_request(prompt: str,
     pload = {
         "prompt": prompt,
         "n": n,
-        "use_beam_search": True,
+        "use_beam_search": False,
         "temperature": 0.0,
         "max_tokens": 16,
         "stream": stream,

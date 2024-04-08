@@ -1,5 +1,6 @@
 import enum
 import time
+import string
 from collections import deque
 from dataclasses import dataclass
 from typing import Deque, Dict, Iterable, List, Optional, Set, Tuple, Union
@@ -203,7 +204,7 @@ class Scheduler:
     def get_num_unfinished_seq_groups(self) -> int:
         return len(self.waiting) + len(self.running) + len(self.swapped)
 
-    def _schedule(self) -> SchedulerOutputs:
+    def _schedule(self) -> Dict[str, SchedulerOutputs]:
         # Blocks that need to be swapped or copied before model execution.
         blocks_to_swap_in: Dict[int, int] = {}
         blocks_to_swap_out: Dict[int, int] = {}
@@ -211,7 +212,8 @@ class Scheduler:
 
         # Fix the current time.
         now = time.time()
-
+        Joint_schedule_outputs: Dict[str, SchedulerOutputs] = {}
+        Prefill_seq_groups: List[SequenceGroup] = []
         # Join waiting sequences if possible.
         if not self.swapped:
             ignored_seq_groups: List[SequenceGroup] = []
@@ -291,7 +293,9 @@ class Scheduler:
                     curr_loras.add(lora_int_id)
                 self.waiting.popleft()
                 self._allocate(seq_group)
-                self.running.append(seq_group)
+                # NOTE(tanzelin430):update the running pool after ALL requests(prefill and decode) are processed
+                # self.running.append(seq_group)
+                Prefill_seq_groups.append(seq_group)
                 num_curr_seqs += num_new_seqs
                 scheduled.append(
                     ScheduledSequenceGroup(
@@ -300,17 +304,19 @@ class Scheduler:
             self.waiting.extendleft(leftover_waiting_sequences)
 
             if scheduled or ignored_seq_groups:
-                self.prev_prompt = True
-                scheduler_outputs = SchedulerOutputs(
-                    scheduled_seq_groups=scheduled,
-                    prompt_run=True,
-                    num_batched_tokens=num_batched_tokens,
-                    blocks_to_swap_in=blocks_to_swap_in,
-                    blocks_to_swap_out=blocks_to_swap_out,
-                    blocks_to_copy=blocks_to_copy,
-                    ignored_seq_groups=ignored_seq_groups,
-                )
-                return scheduler_outputs
+                self.prev_prompt = True                
+            scheduler_outputs = SchedulerOutputs(
+                scheduled_seq_groups=scheduled,
+                prompt_run=True,
+                num_batched_tokens=num_batched_tokens,
+                blocks_to_swap_in=blocks_to_swap_in,
+                blocks_to_swap_out=blocks_to_swap_out,
+                blocks_to_copy=blocks_to_copy,
+                ignored_seq_groups=ignored_seq_groups,
+            )
+            Joint_schedule_outputs["prefill"] = scheduler_outputs
+            # NOTE(tanzelin430): we DO NOT return here to support the parallel computing for prefill and decode
+            # return scheduler_outputs
 
         # NOTE(woosuk): Preemption happens only when there is no available slot
         # to keep all the sequence groups in the RUNNING state.
@@ -406,65 +412,72 @@ class Scheduler:
             blocks_to_copy=blocks_to_copy,
             ignored_seq_groups=[],
         )
-        return scheduler_outputs
+        Joint_schedule_outputs["decode"] = scheduler_outputs
+        for seq_group in Prefill_seq_groups:
+            self.running.append(seq_group)
+        return Joint_schedule_outputs
 
-    def schedule(self) -> Tuple[List[SequenceGroupMetadata], SchedulerOutputs]:
+    def schedule(self) -> Tuple[Dict[str,List[SequenceGroupMetadata]], Dict[str,SchedulerOutputs]]:
         # Schedule sequence groups.
         # This function call changes the internal states of the scheduler
         # such as self.running, self.swapped, and self.waiting.
-        scheduler_outputs = self._schedule()
+        Joint_scheduler_outputs = self._schedule()
         now = time.time()
-
+        Joint_seq_group_metadata_list: Dict[str,List[SequenceGroupMetadata]] = {}
         # Create input data structures.
         seq_group_metadata_list: List[SequenceGroupMetadata] = []
-        for scheduled_seq_group in scheduler_outputs.scheduled_seq_groups:
-            seq_group = scheduled_seq_group.seq_group
-            token_chunk_size = scheduled_seq_group.token_chunk_size
-            seq_group.maybe_set_first_scheduled_time(now)
+        for compute_type, scheduler_outputs in Joint_scheduler_outputs.items():
+            for scheduled_seq_group in scheduler_outputs.scheduled_seq_groups:
+                seq_group = scheduled_seq_group.seq_group
+                token_chunk_size = scheduled_seq_group.token_chunk_size
+                seq_group.maybe_set_first_scheduled_time(now)
 
-            # seq_id -> SequenceData
-            seq_data: Dict[int, SequenceData] = {}
-            # seq_id -> physical block numbers
-            block_tables: Dict[int, List[int]] = {}
+                # seq_id -> SequenceData
+                seq_data: Dict[int, SequenceData] = {}
+                # seq_id -> physical block numbers
+                block_tables: Dict[int, List[int]] = {}
 
-            for seq in seq_group.get_seqs(status=SequenceStatus.RUNNING):
-                seq_id = seq.seq_id
-                seq_data[seq_id] = seq.data
-                block_tables[seq_id] = self.block_manager.get_block_table(seq)
-                self.block_manager.access_all_blocks_in_seq(seq, now)
+                for seq in seq_group.get_seqs(status=SequenceStatus.RUNNING):
+                    seq_id = seq.seq_id
+                    seq_data[seq_id] = seq.data
+                    block_tables[seq_id] = self.block_manager.get_block_table(seq)
+                    self.block_manager.access_all_blocks_in_seq(seq, now)
 
-            common_computed_block_nums = (
-                self.block_manager.get_common_computed_block_ids(
-                    seq_group.get_seqs(status=SequenceStatus.RUNNING)))
+                common_computed_block_nums = (
+                    self.block_manager.get_common_computed_block_ids(
+                        seq_group.get_seqs(status=SequenceStatus.RUNNING)))
 
-            seq_group_metadata = SequenceGroupMetadata(
-                request_id=seq_group.request_id,
-                is_prompt=scheduler_outputs.prompt_run,
-                seq_data=seq_data,
-                sampling_params=seq_group.sampling_params,
-                block_tables=block_tables,
-                token_chunk_size=token_chunk_size,
-                lora_request=seq_group.lora_request,
-                computed_block_nums=common_computed_block_nums,
-                state=seq_group.state,
-                # `multi_modal_data` will only be present for the 1st comm
-                # between engine and worker.
-                # the subsequent comms can still use delta, but
-                # `multi_modal_data` will be None.
-                multi_modal_data=seq_group.multi_modal_data
-                if scheduler_outputs.prompt_run else None,
-            )
-            seq_group_metadata_list.append(seq_group_metadata)
-
+                seq_group_metadata = SequenceGroupMetadata(
+                    request_id=seq_group.request_id,
+                    is_prompt=scheduler_outputs.prompt_run,
+                    seq_data=seq_data,
+                    sampling_params=seq_group.sampling_params,
+                    block_tables=block_tables,
+                    token_chunk_size=token_chunk_size,
+                    lora_request=seq_group.lora_request,
+                    computed_block_nums=common_computed_block_nums,
+                    state=seq_group.state,
+                    # `multi_modal_data` will only be present for the 1st comm
+                    # between engine and worker.
+                    # the subsequent comms can still use delta, but
+                    # `multi_modal_data` will be None.
+                    multi_modal_data=seq_group.multi_modal_data
+                    if scheduler_outputs.prompt_run else None,
+                )
+                seq_group_metadata_list.append(seq_group_metadata)
+            Joint_seq_group_metadata_list[compute_type] = seq_group_metadata_list
+            # clear the list for next compute_type
+            seq_group_metadata_list = []
         # Now that the batch has been created, we can assume all blocks in the
         # batch will have been computed before the next scheduling invocation.
         # This is because the engine assumes that a failure in model execution
         # will crash the vLLM instance / will not retry.
-        for scheduled_seq_group in scheduler_outputs.scheduled_seq_groups:
-            self.block_manager.mark_blocks_as_computed(
-                scheduled_seq_group.seq_group)
+        for scheduler_outputs in Joint_scheduler_outputs.values():
+            for scheduled_seq_group in scheduler_outputs.scheduled_seq_groups:
+                self.block_manager.mark_blocks_as_computed(
+                    scheduled_seq_group.seq_group)
 
-        return seq_group_metadata_list, scheduler_outputs
+        return Joint_seq_group_metadata_list, Joint_scheduler_outputs
 
     def fork_seq(self, parent_seq: Sequence, child_seq: Sequence) -> None:
         self.block_manager.fork(parent_seq, child_seq)

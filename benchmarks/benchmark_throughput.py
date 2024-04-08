@@ -244,8 +244,8 @@ if __name__ == "__main__":
                         default="vllm")
     parser.add_argument("--dataset",
                         type=str,
-                        default=None,
-                        help="Path to the dataset.")
+                        default="ShareGPT_V3_unfiltered_cleaned_split.json",
+                        help="PATH TO DATASET")
     parser.add_argument("--input-len",
                         type=int,
                         default=None,
@@ -255,7 +255,7 @@ if __name__ == "__main__":
                         default=None,
                         help="Output length for each request. Overrides the "
                         "output length from the dataset.")
-    parser.add_argument("--model", type=str, default="facebook/opt-125m")
+    parser.add_argument("--model", type=str, default="meta-llama/Llama-2-13b-hf")
     parser.add_argument("--tokenizer", type=str, default=None)
     parser.add_argument('--quantization',
                         '-q',
@@ -302,7 +302,8 @@ if __name__ == "__main__":
                         'If unspecified, will use the default value of 0.9.')
     parser.add_argument("--enforce-eager",
                         action="store_true",
-                        help="enforce eager execution")
+                        help="enforce eager execution",
+                        default=True)
     parser.add_argument(
         "--kv-cache-dtype",
         type=str,

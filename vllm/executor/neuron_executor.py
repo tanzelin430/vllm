@@ -58,7 +58,7 @@ class NeuronExecutor(ExecutorBase):
         assert (blocks_to_swap_in == {} and blocks_to_swap_out == {}
                 and blocks_to_copy == {}), (
                     "Cache operations are not supported for Neuron backend.")
-
+        print("called in neuron")
         output = self.driver_worker.execute_model(
             seq_group_metadata_list=seq_group_metadata_list)
         return output

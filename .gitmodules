@@ -1,3 +1,6 @@
 [submodule "libsmctrl"]
 	path = libsmctrl
 	url = http://rtsrv.cs.unc.edu/cgit/cgit.cgi/libsmctrl.git/
+[submodule "thirdparty/nvdebug"]
+	path = thirdparty/nvdebug
+	url = http://rtsrv.cs.unc.edu/cgit/cgit.cgi/nvdebug.git/

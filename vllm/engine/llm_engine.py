@@ -1,5 +1,5 @@
 import time
-from typing import Iterable, List, Optional, Tuple, Type, Union
+from typing import Iterable, List, Optional, Tuple, Type, Union, Dict
 
 from transformers import PreTrainedTokenizer
 
@@ -25,7 +25,9 @@ from vllm.transformers_utils.tokenizer_group import (BaseTokenizerGroup,
 from vllm.usage.usage_lib import (UsageContext, is_usage_stats_enabled,
                                   usage_message)
 from vllm.utils import Counter
-
+import torch
+import sys
+import pysmctrl
 logger = init_logger(__name__)
 _LOCAL_LOGGING_INTERVAL_SEC = 5
 
@@ -112,7 +114,15 @@ class LLMEngine:
                                              parallel_config, scheduler_config,
                                              device_config, lora_config,
                                              vision_language_config)
+        
+        self.cuda_stream_pool = [torch.cuda.Stream() for _ in range(2)]
 
+        # Allocate the computing resources for streams
+        # TODO(tanzelin430):Dynamically allocate resource depending on the actual TPC for current device
+        mask_decode = pysmctrl.generate_mask(10, 0)
+        mask_prefill = pysmctrl.generate_mask(36, 10)
+        pysmctrl.set_stream_mask(self.cuda_stream_pool[0], mask_prefill)
+        pysmctrl.set_stream_mask(self.cuda_stream_pool[1], mask_decode)
         # If usage stat is enabled, collect relevant info.
         if is_usage_stats_enabled():
             usage_message.report_usage(
@@ -614,6 +624,22 @@ class LLMEngine:
         if self.log_stats:
             self.stat_logger.log(self._get_stats(scheduler_outputs))
         return request_outputs
+    @staticmethod
+    def merge_dicts(dict1: Optional[Dict], dict2: Optional[Dict]) -> Dict:
+        if dict1 is None and dict2 is None:
+            return {}
+        elif dict1 is None:
+            return dict2.copy()
+        elif dict2 is None:
+            return dict1.copy()
+        else:
+            merged_dict = dict1.copy()
+            for key, value in dict2.items():
+                if key in merged_dict:
+                    raise ValueError(f"Key conflict while merging dictionaries: {key}")
+                else:
+                    merged_dict[key] = value
+            return merged_dict
 
     def step(self) -> List[RequestOutput]:
         """Performs one decoding iteration and returns newly generated results.
@@ -666,18 +692,32 @@ class LLMEngine:
             >>>     if not (engine.has_unfinished_requests() or example_inputs):
             >>>         break
         """
-        seq_group_metadata_list, scheduler_outputs = self.scheduler.schedule()
-
-        if not scheduler_outputs.is_empty():
+        Joint_seq_group_metadata_list, Joint_scheduler_outputs_list = self.scheduler.schedule()
+        
+        if (not Joint_scheduler_outputs_list["prefill"].is_empty()) or (not Joint_scheduler_outputs_list["decode"].is_empty()):
+            blocks_to_swap_in = self.merge_dicts(Joint_scheduler_outputs_list["prefill"].blocks_to_swap_in, Joint_scheduler_outputs_list["decode"].blocks_to_swap_in)
+            blocks_to_swap_out = self.merge_dicts(Joint_scheduler_outputs_list["prefill"].blocks_to_swap_out, Joint_scheduler_outputs_list["decode"].blocks_to_swap_out)
+            blocks_to_copy = self.merge_dicts(Joint_scheduler_outputs_list["prefill"].blocks_to_copy, Joint_scheduler_outputs_list["decode"].blocks_to_copy)
             output = self.model_executor.execute_model(
-                seq_group_metadata_list, scheduler_outputs.blocks_to_swap_in,
-                scheduler_outputs.blocks_to_swap_out,
-                scheduler_outputs.blocks_to_copy)
+                Joint_seq_group_metadata_list, 
+                blocks_to_swap_in,
+                blocks_to_swap_out,
+                blocks_to_copy, 
+                self.cuda_stream_pool)
         else:
             output = []
-
-        return self._process_model_outputs(output, scheduler_outputs)
-
+            return self._process_model_outputs(output, Joint_scheduler_outputs_list["decode"])
+        # check if the output is a List
+        if isinstance(output, dict):
+            processed_outputs: List[RequestOutput] = []
+            for key,value in output.items():
+                for request_output in self._process_model_outputs(value, Joint_scheduler_outputs_list[key]):
+                    processed_outputs.append(request_output)
+            return processed_outputs
+        # return self._process_model_outputs(output, scheduler_outputs)
+        # the type of _process_model_outputs is List[RequestOutput]
+        # we need to union these list to match the requirement of the output type of step()
+        
     def do_log_stats(self) -> None:
         """Forced log when no requests active."""
         if self.log_stats:

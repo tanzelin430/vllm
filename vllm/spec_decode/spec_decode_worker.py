@@ -139,7 +139,7 @@ class SpecDecodeWorker:
     ) -> List[SamplerOutput]:
         """Perform speculative decoding on the input batch.
         """
-
+        print("called in spec decode")
         assert seq_group_metadata_list is not None, (
             "speculative decoding "
             "requires non-None seq_group_metadata_list")

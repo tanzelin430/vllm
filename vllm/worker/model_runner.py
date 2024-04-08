@@ -1,6 +1,6 @@
 import contextlib
 import time
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set, Tuple, Union
 
 import numpy as np
 import torch
@@ -89,6 +89,8 @@ class ModelRunner:
 
         self.attn_backend = get_attn_backend(
             self.model_config.dtype if model_config is not None else None)
+        
+        self.hiddenstate_split = []
 
     def load_model(self) -> None:
         with CudaMemoryProfiler() as m:
@@ -464,7 +466,7 @@ class ModelRunner:
         )
         return (input_tokens, input_positions, attn_metadata,
                 lora_index_mapping, lora_prompt_mapping, lora_requests)
-
+    
     def _prepare_sample(
         self,
         seq_group_metadata_list: List[SequenceGroupMetadata],
@@ -636,45 +638,124 @@ class ModelRunner:
     @torch.inference_mode()
     def execute_model(
         self,
-        seq_group_metadata_list: Optional[List[SequenceGroupMetadata]],
+        Joint_seq_group_metadata_list: Optional[Dict[str, List[SequenceGroupMetadata]]],
         kv_caches: List[torch.Tensor],
-    ) -> Optional[SamplerOutput]:
-        (input_tokens, input_positions, attn_metadata, sampling_metadata,
+        cuda_stream_pool: Optional[List[torch.cuda.Stream]] = None,
+    ) -> Union[Optional[Dict[str, SamplerOutput]]]:
+        decode_and_prompt : bool = False
+        use_cuda_graph : bool = False
+        if not Joint_seq_group_metadata_list["decode"] or not Joint_seq_group_metadata_list["prefill"]:
+            (input_tokens, input_positions, attn_metadata, sampling_metadata,
          lora_requests, lora_mapping, multi_modal_input
-         ) = self.prepare_input_tensors(seq_group_metadata_list)
-
-        if self.lora_config:
-            self.set_active_loras(lora_requests, lora_mapping)
-
-        # Execute the model.
-        if attn_metadata.use_cuda_graph:
-            graph_batch_size = input_tokens.shape[0]
-            model_executable = self.graph_runners[graph_batch_size]
-        else:
-            model_executable = self.model
-        execute_model_kwargs = {
+            ) = self.prepare_input_tensors(Joint_seq_group_metadata_list["prefill"] or Joint_seq_group_metadata_list["decode"])
+            execute_model_kwargs = {
             "input_ids": input_tokens,
             "positions": input_positions,
             "kv_caches": kv_caches,
-            "attn_metadata": attn_metadata,
-        }
-        if self.vision_language_config:
-            execute_model_kwargs.update({"image_input": multi_modal_input})
-        hidden_states = model_executable(**execute_model_kwargs)
+            "attn_metadata": [attn_metadata],
+            }
+        else:
+            (input_tokens_prefill, input_positions_prefill, attn_metadata_prefill, sampling_metadata_prefill,
+            lora_requests_prefill, lora_mapping_prefill, multi_modal_input_prefill
+            ) = self.prepare_input_tensors(Joint_seq_group_metadata_list["prefill"])
+            (input_tokens_decode, input_positions_decode, attn_metadata_decode, sampling_metadata_decode,
+            lora_requests_decode, lora_mapping_decode, multi_modal_input_decode
+            ) = self.prepare_input_tensors(Joint_seq_group_metadata_list["decode"])
+            input_tokens = torch.cat([input_tokens_prefill, input_tokens_decode], dim=0)
+            input_positions = torch.cat([input_positions_prefill, input_positions_decode], dim=0)
+            execute_model_kwargs = {
+            "input_ids": input_tokens,
+            "input_tokens_length": [len(input_tokens_prefill), len(input_tokens_decode)],
+            "positions": input_positions,
+            "input_position_length": [len(input_positions_prefill), len(input_positions_decode)],
+            "kv_caches": kv_caches,
+            "attn_metadata": [attn_metadata_prefill, attn_metadata_decode],
+            "cuda_stream_pool": cuda_stream_pool,
+            }
+            decode_and_prompt = True
+            use_cuda_graph = attn_metadata_prefill.use_cuda_graph or attn_metadata_decode.use_cuda_graph
 
+        if self.lora_config:
+            AssertionError("Currently LoRA is not supported")
+            # self.set_active_loras(lora_requests, lora_mapping)
+
+        # Execute the model.
+        if use_cuda_graph:
+            # TODO: Enable cuda graph for parallel computing.
+            print("call cuda graph")
+            # graph_batch_size = input_tokens_prefill.shape[0] + input_tokens_decode.shape[0]
+            # model_executable = self.graph_runners[graph_batch_size]
+        else:
+            model_executable = self.model
+
+        # if self.vision_language_config:
+            # execute_model_kwargs.update({"image_input": multi_modal_input})
+        hidden_states, self.hiddenstate_split = model_executable(**execute_model_kwargs)
+        total_output: Dict[str, SamplerOutput] = {}
         # Compute the logits.
-        logits = self.model.compute_logits(hidden_states, sampling_metadata)
+        if not decode_and_prompt:
+            if not Joint_seq_group_metadata_list["decode"]:
+                logits = self.model.compute_logits(hidden_states, sampling_metadata)
+                # Only perform sampling in the driver worker.
+                if not sampling_metadata.perform_sampling:
+                    return None
 
-        # Only perform sampling in the driver worker.
-        if not sampling_metadata.perform_sampling:
-            return None
+                # Sample the next token.
+                output = self.model.sample(
+                    logits=logits,
+                    sampling_metadata=sampling_metadata,
+                )
+                total_output["prefill"] = output
+                return total_output
+            elif not Joint_seq_group_metadata_list["prefill"]:
+                logits = self.model.compute_logits(hidden_states, sampling_metadata)
+                # Only perform sampling in the driver worker.
+                if not sampling_metadata.perform_sampling:
+                    return None
+                output = self.model.sample(
+                    logits=logits,
+                    sampling_metadata=sampling_metadata,
+                )
+                total_output["decode"] = output
+                return total_output
+        else:
+            hidden_states_prefill, hidden_states_decode = torch.split(hidden_states, self.hiddenstate_split, dim=0)
+            logits_prefill = self.model.compute_logits(hidden_states_prefill, sampling_metadata_prefill)
+            logits_decode = self.model.compute_logits(hidden_states_decode, sampling_metadata_decode)
+            # Only perform sampling in the driver worker.
+            if (not sampling_metadata_prefill.perform_sampling) and (not sampling_metadata_decode.perform_sampling):
+                return None
+            if not sampling_metadata_prefill.perform_sampling:
+                output_decode = self.model.sample(
+                    logits=logits_decode,
+                    sampling_metadata=sampling_metadata_decode,
+                )
+                total_output["decode"] = output_decode
+                return total_output
+            if not sampling_metadata_decode.perform_sampling:
+                output_prefill = self.model.sample(
+                    logits=logits_prefill,
+                    sampling_metadata=sampling_metadata_prefill,
+                )
+                total_output["prefill"] = output_prefill
+                return total_output
+            output_decode = self.model.sample(
+                logits=logits_decode,
+                sampling_metadata=sampling_metadata_decode,
+            )
+            total_output["decode"] = output_decode
+            output_prefill = self.model.sample(
+                logits=logits_prefill,
+                sampling_metadata=sampling_metadata_prefill,
+            )
+            total_output["prefill"] = output_prefill
+            return total_output
+            
+            
+            
+            
 
-        # Sample the next token.
-        output = self.model.sample(
-            logits=logits,
-            sampling_metadata=sampling_metadata,
-        )
-        return output
+
 
     @torch.inference_mode()
     def profile_run(self) -> None:
@@ -707,7 +788,9 @@ class ModelRunner:
 
         # Profile memory usage with max_num_sequences sequences and the total
         # number of tokens equal to max_num_batched_tokens.
-        seqs: List[SequenceGroupMetadata] = []
+        seqs: Dict[str,List[SequenceGroupMetadata]] = {}
+        seqs["prefill"] = []
+        seqs["decode"] = []
         # Additional GPU memory may be needed for vision encoding, which needs
         # to be accounted for when calculating the GPU blocks for
         # vLLM blocker manager.
@@ -734,7 +817,7 @@ class ModelRunner:
                 if dummy_lora_requests_per_seq else None,
                 multi_modal_data=fake_multi_modal_input,
             )
-            seqs.append(seq)
+            seqs["prefill"].append(seq)
 
         # Run the model with the dummy inputs.
         num_layers = self.model_config.get_num_layers(self.parallel_config)

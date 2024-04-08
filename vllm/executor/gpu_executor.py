@@ -1,4 +1,4 @@
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Union
 
 from vllm.config import (CacheConfig, DeviceConfig, LoRAConfig, ModelConfig,
                          ParallelConfig, SchedulerConfig, VisionLanguageConfig)
@@ -9,7 +9,7 @@ from vllm.lora.request import LoRARequest
 from vllm.sequence import SamplerOutput, SequenceGroupMetadata
 from vllm.utils import (get_distributed_init_method, get_ip, get_open_port,
                         make_async)
-
+import torch
 logger = init_logger(__name__)
 
 
@@ -107,15 +107,17 @@ class GPUExecutor(ExecutorBase):
         self.driver_worker.warm_up_model()
 
     def execute_model(self,
-                      seq_group_metadata_list: List[SequenceGroupMetadata],
+                      seq_group_metadata_list: Union[List[SequenceGroupMetadata], Dict[str, List[SequenceGroupMetadata]]],
                       blocks_to_swap_in: Dict[int, int],
                       blocks_to_swap_out: Dict[int, int],
-                      blocks_to_copy: Dict[int, List[int]]) -> SamplerOutput:
+                      blocks_to_copy: Dict[int, List[int]],
+                      cuda_stream_pool: Optional[List[torch.cuda.Stream]] = None) -> SamplerOutput:
         output = self.driver_worker.execute_model(
             seq_group_metadata_list=seq_group_metadata_list,
             blocks_to_swap_in=blocks_to_swap_in,
             blocks_to_swap_out=blocks_to_swap_out,
             blocks_to_copy=blocks_to_copy,
+            cuda_stream_pool=cuda_stream_pool,
         )
         return output
 

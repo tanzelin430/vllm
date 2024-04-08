@@ -20,7 +20,6 @@ from vllm.sequence import SamplerOutput, SequenceGroupMetadata
 from vllm.worker.cache_engine import CacheEngine
 from vllm.worker.model_runner import ModelRunner
 
-
 class Worker:
     """A worker class that executes (a partition of) the model on a GPU.
 
@@ -187,10 +186,11 @@ class Worker:
     @torch.inference_mode()
     def execute_model(
         self,
-        seq_group_metadata_list: Optional[List[SequenceGroupMetadata]] = None,
+        seq_group_metadata_list: Optional[Dict[str, List[SequenceGroupMetadata]]] = None,
         blocks_to_swap_in: Optional[Dict[int, int]] = None,
         blocks_to_swap_out: Optional[Dict[int, int]] = None,
         blocks_to_copy: Optional[Dict[int, List[int]]] = None,
+        cuda_stream_pool: Optional[List[torch.cuda.Stream]] = None,
     ) -> Optional[SamplerOutput]:
         if self.is_driver_worker:
             assert seq_group_metadata_list is not None
@@ -219,7 +219,7 @@ class Worker:
             return {}
 
         output = self.model_runner.execute_model(seq_group_metadata_list,
-                                                 self.gpu_cache)
+                                                 self.gpu_cache,cuda_stream_pool)
         return output
 
     def add_lora(self, lora_request: LoRARequest) -> bool:
