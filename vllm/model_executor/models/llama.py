@@ -46,7 +46,7 @@ from vllm.model_executor.sampling_metadata import SamplingMetadata
 from vllm.model_executor.weight_utils import (default_weight_loader,
                                               hf_model_weights_iterator)
 from vllm.sequence import SamplerOutput
-
+import pysmctrl
 
 class LlamaMLP(nn.Module):
 
@@ -235,6 +235,8 @@ class LlamaDecoderLayer(nn.Module):
                 positions, input_position_length, dim=0)
             # Enter pre-allocate streams
             # prefill
+            # get_current_stream
+            torch.cuda.current_stream().synchronize()
             with torch.cuda.stream(cuda_stream_pool[0]):
                 hidden_states_prefill = self.self_attn(
                     positions=positions_prefill,
@@ -251,7 +253,8 @@ class LlamaDecoderLayer(nn.Module):
                     attn_metadata=attn_metadata[1],
                 )    
             # sync
-            torch.cuda.synchronize()
+            cuda_stream_pool[0].synchronize()
+            cuda_stream_pool[1].synchronize()
             hidden_states = torch.cat(
                 [hidden_states_prefill, hidden_states_decode], dim=0)
             self.hiddenstate_split = [len(hidden_states_prefill), len(hidden_states_decode)]

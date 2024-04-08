@@ -119,10 +119,11 @@ class LLMEngine:
 
         # Allocate the computing resources for streams
         # TODO(tanzelin430):Dynamically allocate resource depending on the actual TPC for current device
-        mask_decode = pysmctrl.generate_mask(10, 0)
-        mask_prefill = pysmctrl.generate_mask(36, 10)
+        mask_prefill = pysmctrl.generate_mask(36, 0)
+        mask_decode = pysmctrl.generate_mask(10, 36)
         pysmctrl.set_stream_mask(self.cuda_stream_pool[0], mask_prefill)
         pysmctrl.set_stream_mask(self.cuda_stream_pool[1], mask_decode)
+
         # If usage stat is enabled, collect relevant info.
         if is_usage_stats_enabled():
             usage_message.report_usage(

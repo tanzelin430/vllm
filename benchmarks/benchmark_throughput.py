@@ -244,18 +244,18 @@ if __name__ == "__main__":
                         default="vllm")
     parser.add_argument("--dataset",
                         type=str,
-                        default="ShareGPT_V3_unfiltered_cleaned_split.json",
+                        default=None,
                         help="PATH TO DATASET")
     parser.add_argument("--input-len",
                         type=int,
-                        default=None,
+                        default=500,
                         help="Input prompt length for each request")
     parser.add_argument("--output-len",
                         type=int,
-                        default=None,
+                        default=50,
                         help="Output length for each request. Overrides the "
                         "output length from the dataset.")
-    parser.add_argument("--model", type=str, default="meta-llama/Llama-2-13b-hf")
+    parser.add_argument("--model", type=str, default="meta-llama/Llama-2-7b-hf")
     parser.add_argument("--tokenizer", type=str, default=None)
     parser.add_argument('--quantization',
                         '-q',
