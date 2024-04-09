@@ -90,7 +90,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Benchmark the latency of processing a single batch of '
         'requests till completion.')
-    parser.add_argument('--model', type=str, default='facebook/opt-125m')
+    parser.add_argument('--model', type=str, default='meta-llama/Llama-2-7b-hf')
     parser.add_argument('--tokenizer', type=str, default=None)
     parser.add_argument('--quantization',
                         '-q',
@@ -123,6 +123,7 @@ if __name__ == '__main__':
         'for BF16 models.')
     parser.add_argument('--enforce-eager',
                         action='store_true',
+                        default = True,
                         help='enforce eager mode and disable CUDA graph')
     parser.add_argument(
         "--kv-cache-dtype",

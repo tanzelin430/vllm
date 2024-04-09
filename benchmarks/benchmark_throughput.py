@@ -110,7 +110,7 @@ def run_vllm(
             sampling_params=sampling_params,
         )
     # Set QPS by sleeping for a certain interval between requests.
-    desired_qps = 3
+    desired_qps = 10
     sleep_interval = 1 / desired_qps
     time.sleep(sleep_interval)
     start = time.perf_counter()
@@ -272,7 +272,7 @@ if __name__ == "__main__":
     parser.add_argument("--use-beam-search", action="store_true")
     parser.add_argument("--num-prompts",
                         type=int,
-                        default=1000,
+                        default=500,
                         help="Number of prompts to process.")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--hf-max-batch-size",
