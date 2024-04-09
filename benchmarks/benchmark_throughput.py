@@ -109,7 +109,10 @@ def run_vllm(
             prompt_token_ids=None,
             sampling_params=sampling_params,
         )
-
+    # Set QPS by sleeping for a certain interval between requests.
+    desired_qps = 3
+    sleep_interval = 1 / desired_qps
+    time.sleep(sleep_interval)
     start = time.perf_counter()
     # FIXME(woosuk): Do not use internal method.
     llm._run_engine(use_tqdm=True)
