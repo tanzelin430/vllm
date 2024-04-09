@@ -694,7 +694,6 @@ class LLMEngine:
             >>>         break
         """
         Joint_seq_group_metadata_list, Joint_scheduler_outputs_list = self.scheduler.schedule()
-        
         if (not Joint_scheduler_outputs_list["prefill"].is_empty()) or (not Joint_scheduler_outputs_list["decode"].is_empty()):
             blocks_to_swap_in = self.merge_dicts(Joint_scheduler_outputs_list["prefill"].blocks_to_swap_in, Joint_scheduler_outputs_list["decode"].blocks_to_swap_in)
             blocks_to_swap_out = self.merge_dicts(Joint_scheduler_outputs_list["prefill"].blocks_to_swap_out, Joint_scheduler_outputs_list["decode"].blocks_to_swap_out)
@@ -708,6 +707,7 @@ class LLMEngine:
         else:
             output = []
             return self._process_model_outputs(output, Joint_scheduler_outputs_list["decode"])
+        
         # check if the output is a List
         if isinstance(output, dict):
             processed_outputs: List[RequestOutput] = []
