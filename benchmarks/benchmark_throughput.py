@@ -10,7 +10,7 @@ from tqdm import tqdm
 from transformers import (AutoModelForCausalLM, AutoTokenizer,
                           PreTrainedTokenizerBase)
 
-
+import sys
 def sample_requests(
     dataset_path: str,
     num_requests: int,
@@ -91,7 +91,8 @@ def run_vllm(
               kv_cache_dtype=kv_cache_dtype,
               device=device,
               enable_prefix_caching=enable_prefix_caching,
-              download_dir=download_dir)
+              download_dir=download_dir,
+              max_num_seqs=512)
 
     # Add the requests to the engine.
     for prompt, _, output_len in requests:
@@ -110,9 +111,6 @@ def run_vllm(
             sampling_params=sampling_params,
         )
     # Set QPS by sleeping for a certain interval between requests.
-    desired_qps = 10
-    sleep_interval = 1 / desired_qps
-    time.sleep(sleep_interval)
     start = time.perf_counter()
     # FIXME(woosuk): Do not use internal method.
     llm._run_engine(use_tqdm=True)
@@ -251,7 +249,7 @@ if __name__ == "__main__":
                         help="PATH TO DATASET")
     parser.add_argument("--input-len",
                         type=int,
-                        default=500,
+                        default=150,
                         help="Input prompt length for each request")
     parser.add_argument("--output-len",
                         type=int,
@@ -272,7 +270,7 @@ if __name__ == "__main__":
     parser.add_argument("--use-beam-search", action="store_true")
     parser.add_argument("--num-prompts",
                         type=int,
-                        default=500,
+                        default=1000,
                         help="Number of prompts to process.")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--hf-max-batch-size",

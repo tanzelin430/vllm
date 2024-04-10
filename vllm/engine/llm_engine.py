@@ -693,6 +693,7 @@ class LLMEngine:
             >>>     if not (engine.has_unfinished_requests() or example_inputs):
             >>>         break
         """
+        logger.info("Starting the engine step.")
         Joint_seq_group_metadata_list, Joint_scheduler_outputs_list = self.scheduler.schedule()
         if (not Joint_scheduler_outputs_list["prefill"].is_empty()) or (not Joint_scheduler_outputs_list["decode"].is_empty()):
             blocks_to_swap_in = self.merge_dicts(Joint_scheduler_outputs_list["prefill"].blocks_to_swap_in, Joint_scheduler_outputs_list["decode"].blocks_to_swap_in)

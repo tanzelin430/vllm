@@ -654,6 +654,7 @@ class ModelRunner:
             "kv_caches": kv_caches,
             "attn_metadata": [attn_metadata],
             }
+            # logger.info("deploy single-for-loop")
         else:
             (input_tokens_prefill, input_positions_prefill, attn_metadata_prefill, sampling_metadata_prefill,
             lora_requests_prefill, lora_mapping_prefill, multi_modal_input_prefill
@@ -674,6 +675,7 @@ class ModelRunner:
             }
             decode_and_prompt = True
             use_cuda_graph = attn_metadata_prefill.use_cuda_graph or attn_metadata_decode.use_cuda_graph
+            logger.info("deploy para-for-loop for decode and prefill")
 
         if self.lora_config:
             AssertionError("Currently LoRA is not supported")

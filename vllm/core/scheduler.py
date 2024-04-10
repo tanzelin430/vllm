@@ -214,7 +214,10 @@ class Scheduler:
         now = time.time()
         Joint_schedule_outputs: Dict[str, SchedulerOutputs] = {}
         Prefill_seq_groups: List[SequenceGroup] = []
+        num_batched_tokens_prefill = 0
+        num_batched_tokens_decode = 0
         # Join waiting sequences if possible.
+        preempted: List[SequenceGroup] = []
         if not self.swapped:
             ignored_seq_groups: List[SequenceGroup] = []
             scheduled: List[SequenceGroup] = []
@@ -230,8 +233,11 @@ class Scheduler:
             # sequence groups are added to the front and the new sequence groups
             # are added to the back.
             leftover_waiting_sequences = deque()
-            num_batched_tokens = 0
+            counter = 0
             while self._passed_delay(now) and self.waiting:
+                if counter >= 15:
+                    break
+                logger.info(f"Waiting queue size: {len(self.waiting)}")
                 seq_group = self.waiting[0]
                 waiting_seqs = seq_group.get_seqs(
                     status=SequenceStatus.WAITING)
@@ -254,7 +260,12 @@ class Scheduler:
                 # If the sequence group cannot be allocated, stop.
                 can_allocate = self.block_manager.can_allocate(seq_group)
                 if can_allocate == AllocStatus.LATER:
+                    logger.warning(
+                        "The block manager is full. Waiting for the next "
+                        "scheduling step.")
+                    # TODO(tanzelin430): preempt the decode
                     break
+
                 elif can_allocate == AllocStatus.NEVER:
                     logger.warning(
                         f"Input prompt ({num_prefill_tokens} tokens) is too "
@@ -272,14 +283,21 @@ class Scheduler:
                             and len(curr_loras) >= self.lora_config.max_loras):
                         # We don't have a space for another LoRA, so
                         # we ignore this request for now.
+                        logger.info(
+                            f"LoRA request ({lora_int_id}) cannot be allocated "
+                            f"due to the limit of {self.lora_config.max_loras}")
                         leftover_waiting_sequences.appendleft(seq_group)
                         self.waiting.popleft()
                         continue
 
                 # If the number of batched tokens exceeds the limit, stop.
-                num_batched_tokens += num_prefill_tokens
-                if (num_batched_tokens >
+                num_batched_tokens_prefill += num_prefill_tokens
+                if (num_batched_tokens_prefill >
                         self.scheduler_config.max_num_batched_tokens):
+                    logger.info(
+                        f"Batched tokens ({num_batched_tokens_prefill}) "
+                        f"exceeds the limit of "
+                        f"{self.scheduler_config.max_num_batched_tokens}")
                     break
 
                 # The total number of sequences in the RUNNING state should not
@@ -287,10 +305,14 @@ class Scheduler:
                 num_new_seqs = seq_group.get_max_num_running_seqs()
                 if (num_curr_seqs + num_new_seqs >
                         self.scheduler_config.max_num_seqs):
+                    logger.info(
+                        f"Total number of sequences ({num_curr_seqs + num_new_seqs}) "
+                        f"exceeds the limit of {self.scheduler_config.max_num_seqs}")
                     break
 
                 if lora_int_id > 0:
                     curr_loras.add(lora_int_id)
+
                 self.waiting.popleft()
                 self._allocate(seq_group)
                 # NOTE(tanzelin430):update the running pool after ALL requests(prefill and decode) are processed
@@ -301,14 +323,16 @@ class Scheduler:
                     ScheduledSequenceGroup(
                         seq_group=seq_group,
                         token_chunk_size=num_prefill_tokens))
+                counter += 1
             self.waiting.extendleft(leftover_waiting_sequences)
-
+            # TODO(tanzelin430): In prototype cases, blocks_to_swap_in and blocks_to_swap_out and blocks_to_copy are empty
+            # FIXME(tanzelin430): Use new variables to indicate prefilled blocks
             if scheduled or ignored_seq_groups:
                 self.prev_prompt = True                
             scheduler_outputs = SchedulerOutputs(
                 scheduled_seq_groups=scheduled,
                 prompt_run=True,
-                num_batched_tokens=num_batched_tokens,
+                num_batched_tokens=num_batched_tokens_prefill,
                 blocks_to_swap_in=blocks_to_swap_in,
                 blocks_to_swap_out=blocks_to_swap_out,
                 blocks_to_copy=blocks_to_copy,
@@ -326,7 +350,7 @@ class Scheduler:
 
         # Reserve new token slots for the running sequence groups.
         running: Deque[SequenceGroup] = deque()
-        preempted: List[SequenceGroup] = []
+
         while self.running:
             seq_group = self.running.popleft()
             while not self.block_manager.can_append_slot(seq_group):
@@ -395,10 +419,12 @@ class Scheduler:
         # Each sequence in the generation phase only takes one token slot.
         # Therefore, the number of batched tokens is equal to the number of
         # sequences in the RUNNING state.
-        num_batched_tokens = sum(
+        num_batched_tokens_decode = sum(
             seq_group.num_seqs(status=SequenceStatus.RUNNING)
             for seq_group in self.running)
-
+        if not Prefill_seq_groups:
+            num_batched_tokens_decode += num_batched_tokens_prefill
+            Joint_schedule_outputs["prefill"].num_batched_tokens = num_batched_tokens_decode
         scheduler_outputs = SchedulerOutputs(
             scheduled_seq_groups=[
                 ScheduledSequenceGroup(seq_group=running_group,
@@ -406,7 +432,7 @@ class Scheduler:
                 for running_group in self.running
             ],
             prompt_run=False,
-            num_batched_tokens=num_batched_tokens,
+            num_batched_tokens=num_batched_tokens_decode,
             blocks_to_swap_in=blocks_to_swap_in,
             blocks_to_swap_out=blocks_to_swap_out,
             blocks_to_copy=blocks_to_copy,
@@ -415,6 +441,7 @@ class Scheduler:
         Joint_schedule_outputs["decode"] = scheduler_outputs
         for seq_group in Prefill_seq_groups:
             self.running.append(seq_group)
+            logger.info(f"Prefill sequence group {seq_group.request_id} is scheduled.")
         return Joint_schedule_outputs
 
     def schedule(self) -> Tuple[Dict[str,List[SequenceGroupMetadata]], Dict[str,SchedulerOutputs]]:

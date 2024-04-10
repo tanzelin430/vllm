@@ -194,8 +194,6 @@ class LlamaDecoderLayer(nn.Module):
                                        eps=config.rms_norm_eps)
         self.post_attention_layernorm = RMSNorm(config.hidden_size,
                                                 eps=config.rms_norm_eps)
-        # new param: self.is_split:used to indicate whether the input is split into decode and prefill
-        self.is_split = False
         self.hiddenstate_split = []
     def forward(
         self,
@@ -228,7 +226,6 @@ class LlamaDecoderLayer(nn.Module):
         # decode and prefill
         else:
             # split positions and hidden_states
-            self.is_split = True
             hidden_states_prefill, hidden_states_decode = torch.split(
                 hidden_states, input_tokens_length, dim=0)
             positions_prefill, positions_decode = torch.split(

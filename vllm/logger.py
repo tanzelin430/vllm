@@ -54,7 +54,7 @@ if VLLM_CONFIGURE_LOGGING:
 def init_logger(name: str):
     # Use the same settings as above for root logger
     logger = logging.getLogger(name)
-    logger.setLevel(os.getenv("LOG_LEVEL", "DEBUG"))
+    logger.setLevel(os.getenv("LOG_LEVEL", "CRITICAL"))
     if VLLM_CONFIGURE_LOGGING:
         logger.addHandler(_default_handler)
         logger.propagate = False

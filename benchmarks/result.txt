@@ -1,0 +1,2746 @@
+Namespace(backend='vllm', dataset=None, input_len=100, output_len=100, model='meta-llama/Llama-2-7b-hf', tokenizer='meta-llama/Llama-2-7b-hf', quantization=None, tensor_parallel_size=1, n=1, use_beam_search=False, num_prompts=1000, seed=0, hf_max_batch_size=None, trust_remote_code=False, max_model_len=None, dtype='auto', gpu_memory_utilization=0.9, enforce_eager=True, kv_cache_dtype='auto', device='cuda', enable_prefix_caching=False, download_dir=None)
+pysmctrl: Using default path to libsmctrl.so: /workspace/vllm/thirdparty/libsmctrl/libsmctrl.so
+INFO 04-09 09:23:31 llm_engine.py:77] Initializing an LLM engine (v0.4.0) with config: model='meta-llama/Llama-2-7b-hf', tokenizer='meta-llama/Llama-2-7b-hf', tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, disable_custom_all_reduce=True, quantization=None, enforce_eager=True, kv_cache_dtype=auto, device_config=cuda, seed=0)
+INFO 04-09 09:23:32 selector.py:45] Cannot use FlashAttention because the package is not found. Please install it for better performance.
+INFO 04-09 09:23:32 selector.py:21] Using XFormers backend.
+INFO 04-09 09:23:33 weight_utils.py:177] Using model weights format ['*.safetensors']
+INFO 04-09 09:23:35 model_runner.py:106] Loading model weights took 12.5523 GB
+INFO 04-09 09:23:36 gpu_executor.py:94] # GPU blocks: 3443, # CPU blocks: 512
+Processed prompts:   0%|          | 0/1000 [00:00<?, ?it/s]INFO 04-09 09:23:37 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 1000
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 999
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 998
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 997
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 996
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 995
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 994
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 993
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 992
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 991
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 990
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 989
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 988
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 987
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 986
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 985
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 984
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 983
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 982
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 981
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 980
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 979
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 978
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 977
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 976
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 975
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 974
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 973
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 972
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 971
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 970
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 969
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 968
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 967
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 966
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 965
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 964
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 963
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 962
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 961
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 960
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 0 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 1 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 2 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 3 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 4 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 5 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 6 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 7 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 8 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 9 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 10 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 11 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 12 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 13 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 14 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 15 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 16 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 17 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 18 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 19 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 20 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 21 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 22 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 23 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 24 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 25 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 26 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 27 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 28 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 29 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 30 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 31 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 32 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 33 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 34 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 35 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 36 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 37 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 38 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 39 is scheduled.
+INFO 04-09 09:23:37 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 960
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 959
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 958
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 957
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 956
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 955
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 954
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 953
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 952
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 951
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 950
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 949
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 948
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 947
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 946
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 945
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 944
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 943
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 942
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 941
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 940
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 939
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 938
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 937
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 936
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 935
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 934
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 933
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 932
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 931
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 930
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 929
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 928
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 927
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 926
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 925
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 924
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 923
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 922
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 921
+INFO 04-09 09:23:37 scheduler.py:235] Waiting queue size: 920
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 40 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 41 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 42 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 43 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 44 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 45 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 46 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 47 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 48 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 49 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 50 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 51 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 52 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 53 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 54 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 55 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 56 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 57 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 58 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 59 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 60 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 61 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 62 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 63 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 64 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 65 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 66 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 67 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 68 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 69 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 70 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 71 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 72 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 73 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 74 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 75 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 76 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 77 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 78 is scheduled.
+INFO 04-09 09:23:37 scheduler.py:423] Prefill sequence group 79 is scheduled.
+INFO 04-09 09:23:37 model_runner.py:678] deploy para-for-loop for decode and prefill
+INFO 04-09 09:23:38 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 920
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 919
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 918
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 917
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 916
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 915
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 914
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 913
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 912
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 911
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 910
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 909
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 908
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 907
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 906
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 905
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 904
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 903
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 902
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 901
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 900
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 899
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 898
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 897
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 896
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 895
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 894
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 893
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 892
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 891
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 890
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 889
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 888
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 887
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 886
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 885
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 884
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 883
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 882
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 881
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 880
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 80 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 81 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 82 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 83 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 84 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 85 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 86 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 87 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 88 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 89 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 90 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 91 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 92 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 93 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 94 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 95 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 96 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 97 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 98 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 99 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 100 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 101 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 102 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 103 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 104 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 105 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 106 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 107 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 108 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 109 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 110 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 111 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 112 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 113 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 114 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 115 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 116 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 117 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 118 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 119 is scheduled.
+INFO 04-09 09:23:38 model_runner.py:678] deploy para-for-loop for decode and prefill
+INFO 04-09 09:23:38 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 880
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 879
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 878
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 877
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 876
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 875
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 874
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 873
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 872
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 871
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 870
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 869
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 868
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 867
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 866
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 865
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 864
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 863
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 862
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 861
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 860
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 859
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 858
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 857
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 856
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 855
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 854
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 853
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 852
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 851
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 850
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 849
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 848
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 847
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 846
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 845
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 844
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 843
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 842
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 841
+INFO 04-09 09:23:38 scheduler.py:235] Waiting queue size: 840
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 120 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 121 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 122 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 123 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 124 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 125 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 126 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 127 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 128 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 129 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 130 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 131 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 132 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 133 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 134 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 135 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 136 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 137 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 138 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 139 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 140 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 141 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 142 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 143 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 144 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 145 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 146 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 147 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 148 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 149 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 150 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 151 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 152 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 153 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 154 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 155 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 156 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 157 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 158 is scheduled.
+INFO 04-09 09:23:38 scheduler.py:423] Prefill sequence group 159 is scheduled.
+INFO 04-09 09:23:38 model_runner.py:678] deploy para-for-loop for decode and prefill
+INFO 04-09 09:23:39 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 840
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 839
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 838
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 837
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 836
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 835
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 834
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 833
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 832
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 831
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 830
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 829
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 828
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 827
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 826
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 825
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 824
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 823
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 822
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 821
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 820
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 819
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 818
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 817
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 816
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 815
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 814
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 813
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 812
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 811
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 810
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 809
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 808
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 807
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 806
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 805
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 804
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 803
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 802
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 801
+INFO 04-09 09:23:39 scheduler.py:235] Waiting queue size: 800
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 160 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 161 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 162 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 163 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 164 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 165 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 166 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 167 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 168 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 169 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 170 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 171 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 172 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 173 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 174 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 175 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 176 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 177 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 178 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 179 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 180 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 181 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 182 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 183 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 184 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 185 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 186 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 187 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 188 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 189 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 190 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 191 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 192 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 193 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 194 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 195 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 196 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 197 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 198 is scheduled.
+INFO 04-09 09:23:39 scheduler.py:423] Prefill sequence group 199 is scheduled.
+INFO 04-09 09:23:39 model_runner.py:678] deploy para-for-loop for decode and prefill
+INFO 04-09 09:23:40 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 800
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 799
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 798
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 797
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 796
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 795
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 794
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 793
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 792
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 791
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 790
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 789
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 788
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 787
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 786
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 785
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 784
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 783
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 782
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 781
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 780
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 779
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 778
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 777
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 776
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 775
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 774
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 773
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 772
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 771
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 770
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 769
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 768
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 767
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 766
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 765
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 764
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 763
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 762
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 761
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 760
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 200 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 201 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 202 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 203 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 204 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 205 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 206 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 207 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 208 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 209 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 210 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 211 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 212 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 213 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 214 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 215 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 216 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 217 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 218 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 219 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 220 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 221 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 222 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 223 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 224 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 225 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 226 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 227 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 228 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 229 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 230 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 231 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 232 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 233 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 234 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 235 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 236 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 237 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 238 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 239 is scheduled.
+INFO 04-09 09:23:40 model_runner.py:678] deploy para-for-loop for decode and prefill
+INFO 04-09 09:23:40 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 760
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 759
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 758
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 757
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 756
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 755
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 754
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 753
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 752
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 751
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 750
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 749
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 748
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 747
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 746
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 745
+INFO 04-09 09:23:40 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 240 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 241 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 242 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 243 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 244 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 245 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 246 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 247 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 248 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 249 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 250 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 251 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 252 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 253 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 254 is scheduled.
+INFO 04-09 09:23:40 scheduler.py:423] Prefill sequence group 255 is scheduled.
+INFO 04-09 09:23:40 model_runner.py:678] deploy para-for-loop for decode and prefill
+INFO 04-09 09:23:41 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:41 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:41 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:41 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:41 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:41 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:41 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:41 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:41 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:41 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:41 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:41 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:41 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:41 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:41 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:41 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:41 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:41 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:41 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:41 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:41 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:41 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:42 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:42 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:43 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:43 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:43 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:43 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:43 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:43 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:43 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:43 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:43 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:43 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:43 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:43 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:43 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:43 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:43 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:43 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:43 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:43 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:43 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:43 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:44 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:44 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:45 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:45 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:45 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:45 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:45 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:45 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:45 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:45 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:45 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:45 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:45 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:45 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:45 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:45 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:45 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:45 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:45 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:45 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:45 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:45 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:46 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:46 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:46 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:46 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:46 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:46 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:46 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:46 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:46 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:46 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:46 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:46 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:46 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:46 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:46 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:46 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:46 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:46 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:46 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:46 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:46 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:46 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:47 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:47 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:47 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:47 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:47 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:47 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:47 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:47 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:47 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:47 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:47 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:47 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:47 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:47 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:47 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:47 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:47 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:47 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:47 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:47 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:47 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:47 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:48 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:48 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:48 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:48 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:48 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:48 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:48 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:48 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:48 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:48 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:48 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:48 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:48 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:48 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:48 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:48 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:48 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:48 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:49 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:49 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:49 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:49 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:49 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:49 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 744
+Processed prompts:   0%|          | 1/1000 [00:12<3:26:07, 12.38s/it]INFO 04-09 09:23:49 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 744
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 743
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 742
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 741
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 740
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 739
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 738
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 737
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 736
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 735
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 734
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 733
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 732
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 731
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 730
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 729
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 728
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 727
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 726
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 725
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 724
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 723
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 722
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 721
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 720
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 719
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 718
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 717
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 716
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 715
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 714
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 713
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 712
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 711
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 710
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 709
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 708
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 707
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 706
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 705
+INFO 04-09 09:23:49 scheduler.py:235] Waiting queue size: 704
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 256 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 257 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 258 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 259 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 260 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 261 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 262 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 263 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 264 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 265 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 266 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 267 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 268 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 269 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 270 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 271 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 272 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 273 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 274 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 275 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 276 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 277 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 278 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 279 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 280 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 281 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 282 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 283 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 284 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 285 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 286 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 287 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 288 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 289 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 290 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 291 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 292 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 293 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 294 is scheduled.
+INFO 04-09 09:23:49 scheduler.py:423] Prefill sequence group 295 is scheduled.
+INFO 04-09 09:23:49 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:   4%|▍         | 41/1000 [00:12<03:38,  4.39it/s] INFO 04-09 09:23:50 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 704
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 703
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 702
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 701
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 700
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 699
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 698
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 697
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 696
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 695
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 694
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 693
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 692
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 691
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 690
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 689
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 688
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 687
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 686
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 685
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 684
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 683
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 682
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 681
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 680
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 679
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 678
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 677
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 676
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 675
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 674
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 673
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 672
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 671
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 670
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 669
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 668
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 667
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 666
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 665
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 664
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 296 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 297 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 298 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 299 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 300 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 301 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 302 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 303 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 304 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 305 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 306 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 307 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 308 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 309 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 310 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 311 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 312 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 313 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 314 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 315 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 316 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 317 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 318 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 319 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 320 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 321 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 322 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 323 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 324 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 325 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 326 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 327 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 328 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 329 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 330 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 331 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 332 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 333 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 334 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 335 is scheduled.
+INFO 04-09 09:23:50 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:   8%|▊         | 81/1000 [00:13<01:35,  9.66it/s]INFO 04-09 09:23:50 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 664
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 663
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 662
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 661
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 660
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 659
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 658
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 657
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 656
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 655
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 654
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 653
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 652
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 651
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 650
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 649
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 648
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 647
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 646
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 645
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 644
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 643
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 642
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 641
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 640
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 639
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 638
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 637
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 636
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 635
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 634
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 633
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 632
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 631
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 630
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 629
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 628
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 627
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 626
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 625
+INFO 04-09 09:23:50 scheduler.py:235] Waiting queue size: 624
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 336 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 337 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 338 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 339 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 340 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 341 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 342 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 343 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 344 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 345 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 346 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 347 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 348 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 349 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 350 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 351 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 352 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 353 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 354 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 355 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 356 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 357 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 358 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 359 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 360 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 361 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 362 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 363 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 364 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 365 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 366 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 367 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 368 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 369 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 370 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 371 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 372 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 373 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 374 is scheduled.
+INFO 04-09 09:23:50 scheduler.py:423] Prefill sequence group 375 is scheduled.
+INFO 04-09 09:23:50 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  12%|█▏        | 121/1000 [00:14<00:55, 15.80it/s]INFO 04-09 09:23:51 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 624
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 623
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 622
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 621
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 620
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 619
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 618
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 617
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 616
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 615
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 614
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 613
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 612
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 611
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 610
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 609
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 608
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 607
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 606
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 605
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 604
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 603
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 602
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 601
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 600
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 599
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 598
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 597
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 596
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 595
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 594
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 593
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 592
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 591
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 590
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 589
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 588
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 587
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 586
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 585
+INFO 04-09 09:23:51 scheduler.py:235] Waiting queue size: 584
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 376 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 377 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 378 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 379 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 380 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 381 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 382 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 383 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 384 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 385 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 386 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 387 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 388 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 389 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 390 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 391 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 392 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 393 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 394 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 395 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 396 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 397 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 398 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 399 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 400 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 401 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 402 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 403 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 404 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 405 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 406 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 407 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 408 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 409 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 410 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 411 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 412 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 413 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 414 is scheduled.
+INFO 04-09 09:23:51 scheduler.py:423] Prefill sequence group 415 is scheduled.
+INFO 04-09 09:23:51 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  16%|█▌        | 161/1000 [00:14<00:37, 22.58it/s]INFO 04-09 09:23:52 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 584
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 583
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 582
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 581
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 580
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 579
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 578
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 577
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 576
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 575
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 574
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 573
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 572
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 571
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 570
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 569
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 568
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 567
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 566
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 565
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 564
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 563
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 562
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 561
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 560
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 559
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 558
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 557
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 556
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 555
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 554
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 553
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 552
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 551
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 550
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 549
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 548
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 547
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 546
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 545
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 544
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 416 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 417 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 418 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 419 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 420 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 421 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 422 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 423 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 424 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 425 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 426 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 427 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 428 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 429 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 430 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 431 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 432 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 433 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 434 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 435 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 436 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 437 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 438 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 439 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 440 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 441 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 442 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 443 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 444 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 445 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 446 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 447 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 448 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 449 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 450 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 451 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 452 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 453 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 454 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 455 is scheduled.
+INFO 04-09 09:23:52 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  20%|██        | 201/1000 [00:15<00:26, 29.63it/s]INFO 04-09 09:23:52 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 544
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 543
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 542
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 541
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 540
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 539
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 538
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 537
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 536
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 535
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 534
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 533
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 532
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 531
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 530
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 529
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 528
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 527
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 526
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 525
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 524
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 523
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 522
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 521
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 520
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 519
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 518
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 517
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 516
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 515
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 514
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 513
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 512
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 511
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 510
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 509
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 508
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 507
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 506
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 505
+INFO 04-09 09:23:52 scheduler.py:235] Waiting queue size: 504
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 456 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 457 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 458 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 459 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 460 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 461 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 462 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 463 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 464 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 465 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 466 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 467 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 468 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 469 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 470 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 471 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 472 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 473 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 474 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 475 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 476 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 477 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 478 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 479 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 480 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 481 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 482 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 483 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 484 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 485 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 486 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 487 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 488 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 489 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 490 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 491 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 492 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 493 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 494 is scheduled.
+INFO 04-09 09:23:52 scheduler.py:423] Prefill sequence group 495 is scheduled.
+INFO 04-09 09:23:52 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  24%|██▍       | 241/1000 [00:15<00:20, 36.55it/s]INFO 04-09 09:23:53 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 504
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 503
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 502
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 501
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 500
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 499
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 498
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 497
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 496
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 495
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 494
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 493
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 492
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 491
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 490
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 489
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 496 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 497 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 498 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 499 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 500 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 501 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 502 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 503 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 504 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 505 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 506 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 507 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 508 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 509 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 510 is scheduled.
+INFO 04-09 09:23:53 scheduler.py:423] Prefill sequence group 511 is scheduled.
+INFO 04-09 09:23:53 model_runner.py:678] deploy para-for-loop for decode and prefill
+INFO 04-09 09:23:53 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:53 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:53 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:53 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:53 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:53 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:53 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:54 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:54 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:54 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:54 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:54 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:54 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:54 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:54 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:54 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:54 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:54 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:54 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:54 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:54 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:54 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:54 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:54 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:54 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:54 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:54 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:54 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:54 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:55 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:55 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:56 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:56 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:56 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:56 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:56 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:56 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:56 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:56 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:56 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:56 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:56 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:56 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:56 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:56 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:56 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:56 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:56 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:56 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:56 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:56 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:56 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:56 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:57 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:57 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:57 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:57 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:57 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:57 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:57 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:57 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:57 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:57 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:57 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:57 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:57 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:57 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:57 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:57 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:57 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:57 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:57 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:57 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:57 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:57 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:58 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:58 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:58 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:58 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:58 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:58 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:58 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:58 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:58 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:58 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:58 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:58 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:58 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:58 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:58 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:58 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:58 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:58 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:58 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:58 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:59 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:59 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:59 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:59 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:59 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:59 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:59 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:59 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:59 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:59 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:59 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:59 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:59 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:59 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:59 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:59 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:59 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:59 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:59 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:59 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:23:59 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:23:59 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:00 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:00 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:00 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:00 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:00 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:00 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:00 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:00 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:00 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:00 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:00 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:00 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:00 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:00 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:00 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:00 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:00 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:00 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:00 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:00 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:01 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:01 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:01 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:01 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:01 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:01 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:01 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:01 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:01 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:01 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:01 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:01 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:01 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:01 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:01 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:01 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:01 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:01 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:01 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:01 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:02 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 488
+Processed prompts:  26%|██▌       | 257/1000 [00:24<01:24,  8.80it/s]INFO 04-09 09:24:02 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 488
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 487
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 486
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 485
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 484
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 483
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 482
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 481
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 480
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 479
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 478
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 477
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 476
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 475
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 474
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 473
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 472
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 471
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 470
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 469
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 468
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 467
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 466
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 465
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 464
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 463
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 462
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 461
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 460
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 459
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 458
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 457
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 456
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 455
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 454
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 453
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 452
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 451
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 450
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 449
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 448
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 512 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 513 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 514 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 515 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 516 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 517 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 518 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 519 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 520 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 521 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 522 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 523 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 524 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 525 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 526 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 527 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 528 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 529 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 530 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 531 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 532 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 533 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 534 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 535 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 536 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 537 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 538 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 539 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 540 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 541 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 542 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 543 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 544 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 545 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 546 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 547 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 548 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 549 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 550 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 551 is scheduled.
+INFO 04-09 09:24:02 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  30%|██▉       | 297/1000 [00:25<00:54, 12.91it/s]INFO 04-09 09:24:02 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 448
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 447
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 446
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 445
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 444
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 443
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 442
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 441
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 440
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 439
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 438
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 437
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 436
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 435
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 434
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 433
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 432
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 431
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 430
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 429
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 428
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 427
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 426
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 425
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 424
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 423
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 422
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 421
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 420
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 419
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 418
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 417
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 416
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 415
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 414
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 413
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 412
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 411
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 410
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 409
+INFO 04-09 09:24:02 scheduler.py:235] Waiting queue size: 408
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 552 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 553 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 554 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 555 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 556 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 557 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 558 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 559 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 560 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 561 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 562 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 563 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 564 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 565 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 566 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 567 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 568 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 569 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 570 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 571 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 572 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 573 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 574 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 575 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 576 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 577 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 578 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 579 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 580 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 581 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 582 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 583 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 584 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 585 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 586 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 587 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 588 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 589 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 590 is scheduled.
+INFO 04-09 09:24:02 scheduler.py:423] Prefill sequence group 591 is scheduled.
+INFO 04-09 09:24:02 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  34%|███▎      | 337/1000 [00:26<00:37, 17.86it/s]INFO 04-09 09:24:03 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 408
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 407
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 406
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 405
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 404
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 403
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 402
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 401
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 400
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 399
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 398
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 397
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 396
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 395
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 394
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 393
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 392
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 391
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 390
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 389
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 388
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 387
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 386
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 385
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 384
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 383
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 382
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 381
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 380
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 379
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 378
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 377
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 376
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 375
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 374
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 373
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 372
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 371
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 370
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 369
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 368
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 592 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 593 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 594 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 595 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 596 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 597 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 598 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 599 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 600 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 601 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 602 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 603 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 604 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 605 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 606 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 607 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 608 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 609 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 610 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 611 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 612 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 613 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 614 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 615 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 616 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 617 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 618 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 619 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 620 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 621 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 622 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 623 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 624 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 625 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 626 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 627 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 628 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 629 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 630 is scheduled.
+INFO 04-09 09:24:03 scheduler.py:423] Prefill sequence group 631 is scheduled.
+INFO 04-09 09:24:03 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  38%|███▊      | 377/1000 [00:26<00:26, 23.53it/s]INFO 04-09 09:24:03 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 368
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 367
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 366
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 365
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 364
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 363
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 362
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 361
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 360
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 359
+INFO 04-09 09:24:03 scheduler.py:235] Waiting queue size: 358
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 357
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 356
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 355
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 354
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 353
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 352
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 351
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 350
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 349
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 348
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 347
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 346
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 345
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 344
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 343
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 342
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 341
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 340
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 339
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 338
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 337
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 336
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 335
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 334
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 333
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 332
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 331
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 330
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 329
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 328
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 632 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 633 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 634 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 635 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 636 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 637 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 638 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 639 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 640 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 641 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 642 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 643 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 644 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 645 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 646 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 647 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 648 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 649 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 650 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 651 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 652 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 653 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 654 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 655 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 656 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 657 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 658 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 659 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 660 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 661 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 662 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 663 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 664 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 665 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 666 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 667 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 668 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 669 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 670 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 671 is scheduled.
+INFO 04-09 09:24:04 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  42%|████▏     | 417/1000 [00:27<00:19, 29.66it/s]INFO 04-09 09:24:04 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 328
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 327
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 326
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 325
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 324
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 323
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 322
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 321
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 320
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 319
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 318
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 317
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 316
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 315
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 314
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 313
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 312
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 311
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 310
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 309
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 308
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 307
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 306
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 305
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 304
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 303
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 302
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 301
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 300
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 299
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 298
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 297
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 296
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 295
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 294
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 293
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 292
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 291
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 290
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 289
+INFO 04-09 09:24:04 scheduler.py:235] Waiting queue size: 288
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 672 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 673 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 674 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 675 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 676 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 677 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 678 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 679 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 680 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 681 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 682 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 683 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 684 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 685 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 686 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 687 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 688 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 689 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 690 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 691 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 692 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 693 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 694 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 695 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 696 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 697 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 698 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 699 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 700 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 701 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 702 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 703 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 704 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 705 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 706 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 707 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 708 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 709 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 710 is scheduled.
+INFO 04-09 09:24:04 scheduler.py:423] Prefill sequence group 711 is scheduled.
+INFO 04-09 09:24:04 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  46%|████▌     | 457/1000 [00:27<00:15, 35.90it/s]INFO 04-09 09:24:05 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 288
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 287
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 286
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 285
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 284
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 283
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 282
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 281
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 280
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 279
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 278
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 277
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 276
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 275
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 274
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 273
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 272
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 271
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 270
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 269
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 268
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 267
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 266
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 265
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 264
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 263
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 262
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 261
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 260
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 259
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 258
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 257
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 256
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 255
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 254
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 253
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 252
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 251
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 250
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 249
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 248
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 712 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 713 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 714 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 715 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 716 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 717 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 718 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 719 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 720 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 721 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 722 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 723 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 724 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 725 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 726 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 727 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 728 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 729 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 730 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 731 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 732 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 733 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 734 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 735 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 736 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 737 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 738 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 739 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 740 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 741 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 742 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 743 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 744 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 745 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 746 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 747 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 748 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 749 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 750 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 751 is scheduled.
+INFO 04-09 09:24:05 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  50%|████▉     | 497/1000 [00:28<00:12, 41.89it/s]INFO 04-09 09:24:05 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 248
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 247
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 246
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 245
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 244
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 243
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 242
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 241
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 240
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 239
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 238
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 237
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 236
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 235
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 234
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 233
+INFO 04-09 09:24:05 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 752 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 753 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 754 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 755 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 756 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 757 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 758 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 759 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 760 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 761 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 762 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 763 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 764 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 765 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 766 is scheduled.
+INFO 04-09 09:24:05 scheduler.py:423] Prefill sequence group 767 is scheduled.
+INFO 04-09 09:24:05 model_runner.py:678] deploy para-for-loop for decode and prefill
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:06 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:06 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:07 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:07 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:07 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:07 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:07 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:07 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:07 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:07 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:07 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:07 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:07 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:07 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:07 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:07 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:07 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:07 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:07 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:07 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:07 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:07 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:07 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:07 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:08 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:08 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:09 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:09 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:09 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:09 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:09 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:09 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:09 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:09 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:09 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:09 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:09 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:09 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:09 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:09 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:09 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:09 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:09 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:09 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:09 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:09 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:10 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:10 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:10 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:10 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:10 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:10 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:10 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:10 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:10 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:10 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:10 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:10 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:10 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:10 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:10 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:10 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:10 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:10 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:10 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:10 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:10 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:10 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:11 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:11 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:11 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:11 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:11 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:11 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:11 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:11 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:11 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:11 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:11 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:11 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:11 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:11 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:11 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:11 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:11 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:11 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:11 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:11 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:12 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:12 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:12 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:12 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:12 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:12 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:12 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:12 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:12 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:12 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:12 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:12 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:12 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:12 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:12 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:12 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:12 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:12 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:12 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:12 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:12 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:12 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:13 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:13 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:13 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:13 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:13 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:13 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:13 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:13 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:13 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:13 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:13 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:13 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:13 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:13 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:13 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:13 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:13 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:13 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:13 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:13 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:14 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:14 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:14 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:14 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:14 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:14 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 232
+Processed prompts:  51%|█████▏    | 513/1000 [00:37<00:50,  9.58it/s]INFO 04-09 09:24:14 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 232
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 231
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 230
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 229
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 228
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 227
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 226
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 225
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 224
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 223
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 222
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 221
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 220
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 219
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 218
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 217
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 216
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 215
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 214
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 213
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 212
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 211
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 210
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 209
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 208
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 207
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 206
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 205
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 204
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 203
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 202
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 201
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 200
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 199
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 198
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 197
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 196
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 195
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 194
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 193
+INFO 04-09 09:24:14 scheduler.py:235] Waiting queue size: 192
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 768 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 769 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 770 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 771 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 772 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 773 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 774 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 775 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 776 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 777 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 778 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 779 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 780 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 781 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 782 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 783 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 784 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 785 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 786 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 787 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 788 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 789 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 790 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 791 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 792 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 793 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 794 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 795 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 796 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 797 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 798 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 799 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 800 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 801 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 802 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 803 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 804 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 805 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 806 is scheduled.
+INFO 04-09 09:24:14 scheduler.py:423] Prefill sequence group 807 is scheduled.
+INFO 04-09 09:24:14 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  55%|█████▌    | 553/1000 [00:38<00:32, 13.67it/s]INFO 04-09 09:24:15 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 192
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 191
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 190
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 189
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 188
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 187
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 186
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 185
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 184
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 183
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 182
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 181
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 180
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 179
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 178
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 177
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 176
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 175
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 174
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 173
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 172
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 171
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 170
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 169
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 168
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 167
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 166
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 165
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 164
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 163
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 162
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 161
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 160
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 159
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 158
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 157
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 156
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 155
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 154
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 153
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 152
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 808 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 809 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 810 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 811 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 812 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 813 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 814 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 815 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 816 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 817 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 818 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 819 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 820 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 821 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 822 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 823 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 824 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 825 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 826 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 827 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 828 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 829 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 830 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 831 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 832 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 833 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 834 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 835 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 836 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 837 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 838 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 839 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 840 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 841 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 842 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 843 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 844 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 845 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 846 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 847 is scheduled.
+INFO 04-09 09:24:15 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  59%|█████▉    | 593/1000 [00:38<00:21, 18.57it/s]INFO 04-09 09:24:15 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 152
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 151
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 150
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 149
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 148
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 147
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 146
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 145
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 144
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 143
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 142
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 141
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 140
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 139
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 138
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 137
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 136
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 135
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 134
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 133
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 132
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 131
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 130
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 129
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 128
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 127
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 126
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 125
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 124
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 123
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 122
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 121
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 120
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 119
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 118
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 117
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 116
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 115
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 114
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 113
+INFO 04-09 09:24:15 scheduler.py:235] Waiting queue size: 112
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 848 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 849 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 850 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 851 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 852 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 853 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 854 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 855 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 856 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 857 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 858 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 859 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 860 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 861 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 862 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 863 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 864 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 865 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 866 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 867 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 868 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 869 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 870 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 871 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 872 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 873 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 874 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 875 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 876 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 877 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 878 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 879 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 880 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 881 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 882 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 883 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 884 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 885 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 886 is scheduled.
+INFO 04-09 09:24:15 scheduler.py:423] Prefill sequence group 887 is scheduled.
+INFO 04-09 09:24:15 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  63%|██████▎   | 633/1000 [00:39<00:15, 24.19it/s]INFO 04-09 09:24:16 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 112
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 111
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 110
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 109
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 108
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 107
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 106
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 105
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 104
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 103
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 102
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 101
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 100
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 99
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 98
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 97
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 96
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 95
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 94
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 93
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 92
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 91
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 90
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 89
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 88
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 87
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 86
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 85
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 84
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 83
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 82
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 81
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 80
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 79
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 78
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 77
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 76
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 75
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 74
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 73
+INFO 04-09 09:24:16 scheduler.py:235] Waiting queue size: 72
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 888 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 889 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 890 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 891 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 892 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 893 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 894 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 895 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 896 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 897 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 898 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 899 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 900 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 901 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 902 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 903 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 904 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 905 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 906 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 907 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 908 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 909 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 910 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 911 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 912 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 913 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 914 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 915 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 916 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 917 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 918 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 919 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 920 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 921 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 922 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 923 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 924 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 925 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 926 is scheduled.
+INFO 04-09 09:24:16 scheduler.py:423] Prefill sequence group 927 is scheduled.
+INFO 04-09 09:24:16 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  67%|██████▋   | 673/1000 [00:39<00:10, 30.26it/s]INFO 04-09 09:24:17 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 72
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 71
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 70
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 69
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 68
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 67
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 66
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 65
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 64
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 63
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 62
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 61
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 60
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 59
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 58
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 57
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 56
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 55
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 54
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 53
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 52
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 51
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 50
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 49
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 48
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 47
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 46
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 45
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 44
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 43
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 42
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 41
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 40
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 39
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 38
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 37
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 36
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 35
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 34
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 33
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 32
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 928 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 929 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 930 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 931 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 932 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 933 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 934 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 935 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 936 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 937 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 938 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 939 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 940 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 941 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 942 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 943 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 944 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 945 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 946 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 947 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 948 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 949 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 950 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 951 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 952 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 953 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 954 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 955 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 956 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 957 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 958 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 959 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 960 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 961 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 962 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 963 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 964 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 965 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 966 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 967 is scheduled.
+INFO 04-09 09:24:17 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  71%|███████▏  | 713/1000 [00:40<00:07, 36.41it/s]INFO 04-09 09:24:17 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 32
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 31
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 30
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 29
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 28
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 27
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 26
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 25
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 24
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 23
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 22
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 21
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 20
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 19
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 18
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 17
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 16
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 15
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 14
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 13
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 12
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 11
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 10
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 9
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 8
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 7
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 6
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 5
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 4
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 3
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 2
+INFO 04-09 09:24:17 scheduler.py:235] Waiting queue size: 1
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 968 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 969 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 970 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 971 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 972 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 973 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 974 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 975 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 976 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 977 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 978 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 979 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 980 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 981 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 982 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 983 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 984 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 985 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 986 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 987 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 988 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 989 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 990 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 991 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 992 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 993 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 994 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 995 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 996 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 997 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 998 is scheduled.
+INFO 04-09 09:24:17 scheduler.py:423] Prefill sequence group 999 is scheduled.
+INFO 04-09 09:24:17 model_runner.py:678] deploy para-for-loop for decode and prefill
+Processed prompts:  75%|███████▌  | 753/1000 [00:40<00:05, 43.90it/s]INFO 04-09 09:24:18 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:18 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:18 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:18 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:18 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:18 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:18 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:18 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:18 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:18 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:18 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:19 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:20 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:21 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:22 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:22 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:22 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:22 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:22 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:22 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:22 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:22 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:22 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:22 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:22 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:23 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:24 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:24 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:24 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:24 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:24 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:24 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:24 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:24 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:24 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:24 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:25 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:25 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:25 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:25 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:25 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:25 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:25 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:25 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:25 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:25 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:25 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:26 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:26 llm_engine.py:696] Starting the engine step.
+Processed prompts:  77%|███████▋  | 769/1000 [00:48<00:21, 10.70it/s]INFO 04-09 09:24:26 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:26 llm_engine.py:696] Starting the engine step.
+Processed prompts:  85%|████████▍ | 849/1000 [00:49<00:06, 21.63it/s]INFO 04-09 09:24:26 llm_engine.py:696] Starting the engine step.
+INFO 04-09 09:24:26 llm_engine.py:696] Starting the engine step.
+Processed prompts:  93%|█████████▎| 929/1000 [00:49<00:01, 36.81it/s]INFO 04-09 09:24:26 llm_engine.py:696] Starting the engine step.
+Processed prompts: 100%|██████████| 1000/1000 [00:49<00:00, 20.32it/s]
+Throughput: 20.32 requests/s, 4063.12 tokens/s
