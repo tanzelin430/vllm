@@ -142,20 +142,38 @@ class LlamaAttention(nn.Module):
                               self.scaling,
                               num_kv_heads=self.num_kv_heads,
                               sliding_window=sliding_window)
+        self.hiddenstate_split = []
 
     def forward(
         self,
         positions: torch.Tensor,
         hidden_states: torch.Tensor,
         kv_cache: torch.Tensor,
-        attn_metadata: AttentionMetadata,
-    ) -> torch.Tensor:
+        attn_metadata: List[AttentionMetadata],
+        cuda_stream_pool: Optional[List[torch.cuda.Stream]] = None,
+        input_position_length: Optional[List[int]] = None,
+        input_tokens_length: Optional[List[int]] = None,
+    ) -> Tuple[torch.Tensor, List[int]]:
         qkv, _ = self.qkv_proj(hidden_states)
         q, k, v = qkv.split([self.q_size, self.kv_size, self.kv_size], dim=-1)
         q, k = self.rotary_emb(positions, q, k)
-        attn_output = self.attn(q, k, v, kv_cache, attn_metadata)
+        if input_position_length is None:
+            attn_output = self.attn(q, k, v, kv_cache, attn_metadata[0])
+        else:
+            # positions_prefill, positions_decode = torch.split(positions, input_position_length, dim=0)
+            q_prefill, q_decode = torch.split(q, input_tokens_length, dim=0)
+            k_prefill, k_decode = torch.split(k, input_tokens_length, dim=0)
+            v_prefill, v_decode = torch.split(v, input_tokens_length, dim=0)
+            torch.cuda.current_stream().synchronize()
+            with torch.cuda.stream(cuda_stream_pool[0]):
+                attn_output_prefill = self.attn(q_prefill, k_prefill, v_prefill, kv_cache, attn_metadata[0])
+            with torch.cuda.stream(cuda_stream_pool[1]):
+                attn_output_decode = self.attn(q_decode, k_decode, v_decode, kv_cache, attn_metadata[1])
+            torch.cuda.synchronize()
+            attn_output = torch.cat([attn_output_prefill, attn_output_decode], dim=0)
+            self.hiddenstate_split = [len(attn_output_prefill), len(attn_output_decode)]
         output, _ = self.o_proj(attn_output)
-        return output
+        return output, self.hiddenstate_split
 
 
 class LlamaDecoderLayer(nn.Module):
@@ -205,7 +223,7 @@ class LlamaDecoderLayer(nn.Module):
         attn_metadata: List[AttentionMetadata],
         residual: Optional[torch.Tensor],
         cuda_stream_pool: Optional[List[torch.cuda.Stream]] = None,
-    ) -> Tuple[torch.Tensor, torch.Tensor]:
+    ) -> Tuple[torch.Tensor, torch.Tensor, List[int]]:
         # Self Attention
         if residual is None:
             residual = hidden_states
@@ -216,45 +234,15 @@ class LlamaDecoderLayer(nn.Module):
         # synchroni
         torch.cuda.synchronize()
         # only decode or prefill
-        if input_position_length is None:
-            hidden_states = self.self_attn(
-                positions=positions,
-                hidden_states=hidden_states,
-                kv_cache=kv_cache,
-                attn_metadata=attn_metadata[0],
-            )
-        # decode and prefill
-        else:
-            # split positions and hidden_states
-            hidden_states_prefill, hidden_states_decode = torch.split(
-                hidden_states, input_tokens_length, dim=0)
-            positions_prefill, positions_decode = torch.split(
-                positions, input_position_length, dim=0)
-            # Enter pre-allocate streams
-            # prefill
-            # get_current_stream
-            torch.cuda.current_stream().synchronize()
-            with torch.cuda.stream(cuda_stream_pool[0]):
-                hidden_states_prefill = self.self_attn(
-                    positions=positions_prefill,
-                    hidden_states=hidden_states_prefill,
-                    kv_cache=kv_cache,
-                    attn_metadata=attn_metadata[0],
-                )
-            # decode
-            with torch.cuda.stream(cuda_stream_pool[1]):
-                hidden_states_decode = self.self_attn(
-                    positions=positions_decode,
-                    hidden_states=hidden_states_decode,
-                    kv_cache=kv_cache,
-                    attn_metadata=attn_metadata[1],
-                )    
-            # sync
-            cuda_stream_pool[0].synchronize()
-            cuda_stream_pool[1].synchronize()
-            hidden_states = torch.cat(
-                [hidden_states_prefill, hidden_states_decode], dim=0)
-            self.hiddenstate_split = [len(hidden_states_prefill), len(hidden_states_decode)]
+        hidden_states, self.hiddenstate_split = self.self_attn(
+            positions=positions,
+            hidden_states=hidden_states,
+            kv_cache=kv_cache,
+            attn_metadata=attn_metadata,
+            cuda_stream_pool = cuda_stream_pool,
+            input_position_length=input_position_length,
+            input_tokens_length=input_tokens_length,
+        )
         # Back to default stream
         # Fully Connected
         hidden_states, residual = self.post_attention_layernorm(
@@ -303,7 +291,7 @@ class LlamaModel(nn.Module):
         attn_metadata: List[AttentionMetadata] = None,
         inputs_embeds: Optional[torch.Tensor] = None,
         cuda_stream_pool: Optional[List[torch.cuda.Stream]] = None,
-    ) -> torch.Tensor:
+    ) -> Tuple[torch.Tensor, List[int]]:
         if inputs_embeds is not None:
             hidden_states = inputs_embeds
         else:
@@ -391,7 +379,7 @@ class LlamaForCausalLM(nn.Module):
         kv_caches: List[torch.Tensor] = None,
         attn_metadata: List[AttentionMetadata] = None,
         cuda_stream_pool: Optional[List[torch.cuda.Stream]] = None,
-    ) -> torch.Tensor:
+    ) -> Tuple[torch.Tensor,List[int]]:
         # allocate stream1
         hidden_states, self.hiddenstate_split = self.model(input_ids, input_tokens_length, positions, input_position_length, kv_caches,
                                    attn_metadata, cuda_stream_pool = cuda_stream_pool)

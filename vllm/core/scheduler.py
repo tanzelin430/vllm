@@ -235,7 +235,7 @@ class Scheduler:
             leftover_waiting_sequences = deque()
             counter = 0
             while self._passed_delay(now) and self.waiting:
-                if counter >= 15:
+                if counter >= 10:
                     break
                 logger.info(f"Waiting queue size: {len(self.waiting)}")
                 seq_group = self.waiting[0]
@@ -422,8 +422,10 @@ class Scheduler:
         num_batched_tokens_decode = sum(
             seq_group.num_seqs(status=SequenceStatus.RUNNING)
             for seq_group in self.running)
-        if not Prefill_seq_groups:
+        logger.info(f"Number of batched requests for decode: {num_batched_tokens_decode}")
+        if Prefill_seq_groups:
             num_batched_tokens_decode += num_batched_tokens_prefill
+            logger.info(f"number of prefill tokens: {num_batched_tokens_prefill}")
             Joint_schedule_outputs["prefill"].num_batched_tokens = num_batched_tokens_decode
         scheduler_outputs = SchedulerOutputs(
             scheduled_seq_groups=[
@@ -559,6 +561,7 @@ class Scheduler:
             else:
                 preemption_mode = PreemptionMode.SWAP
         if preemption_mode == PreemptionMode.RECOMPUTE:
+            logger.info(f"Preempting sequence group {seq_group.request_id} by recomputation.")
             self._preempt_by_recompute(seq_group)
         elif preemption_mode == PreemptionMode.SWAP:
             self._preempt_by_swap(seq_group, blocks_to_swap_out)
