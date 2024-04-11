@@ -1,2 +1,4 @@
 *.json
 *.nsys-rep
+*.png
+*.log

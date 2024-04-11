@@ -235,8 +235,8 @@ class Scheduler:
             leftover_waiting_sequences = deque()
             counter = 0
             while self._passed_delay(now) and self.waiting:
-                if counter >= 10:
-                    break
+                # if counter >= 50:
+                #     break
                 logger.info(f"Waiting queue size: {len(self.waiting)}")
                 seq_group = self.waiting[0]
                 waiting_seqs = seq_group.get_seqs(

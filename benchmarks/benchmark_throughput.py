@@ -249,11 +249,11 @@ if __name__ == "__main__":
                         help="PATH TO DATASET")
     parser.add_argument("--input-len",
                         type=int,
-                        default=500,
+                        default=100,
                         help="Input prompt length for each request")
     parser.add_argument("--output-len",
                         type=int,
-                        default=10,
+                        default=200,
                         help="Output length for each request. Overrides the "
                         "output length from the dataset.")
     parser.add_argument("--model", type=str, default="meta-llama/Llama-2-7b-hf")
@@ -270,7 +270,7 @@ if __name__ == "__main__":
     parser.add_argument("--use-beam-search", action="store_true")
     parser.add_argument("--num-prompts",
                         type=int,
-                        default=1000,
+                        default=100000,
                         help="Number of prompts to process.")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--hf-max-batch-size",

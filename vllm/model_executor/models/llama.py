@@ -160,11 +160,11 @@ class LlamaAttention(nn.Module):
         if input_position_length is None:
             attn_output = self.attn(q, k, v, kv_cache, attn_metadata[0])
         else:
+            torch.cuda.synchronize()
             # positions_prefill, positions_decode = torch.split(positions, input_position_length, dim=0)
             q_prefill, q_decode = torch.split(q, input_tokens_length, dim=0)
             k_prefill, k_decode = torch.split(k, input_tokens_length, dim=0)
             v_prefill, v_decode = torch.split(v, input_tokens_length, dim=0)
-            torch.cuda.current_stream().synchronize()
             with torch.cuda.stream(cuda_stream_pool[0]):
                 attn_output_prefill = self.attn(q_prefill, k_prefill, v_prefill, kv_cache, attn_metadata[0])
             with torch.cuda.stream(cuda_stream_pool[1]):
@@ -232,7 +232,6 @@ class LlamaDecoderLayer(nn.Module):
             hidden_states, residual = self.input_layernorm(
                 hidden_states, residual)
         # synchroni
-        torch.cuda.synchronize()
         # only decode or prefill
         hidden_states, self.hiddenstate_split = self.self_attn(
             positions=positions,
