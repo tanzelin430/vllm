@@ -252,7 +252,7 @@ if __name__ == "__main__":
                         default="vllm")
     parser.add_argument("--dataset",
                         type=str,
-                        default=None,
+                        default="/workspace/vllm/benchmarks/ShareGPT_V3_unfiltered_cleaned_split.json",
                         help="Path to the dataset.")
     parser.add_argument("--input-len",
                         type=int,
@@ -263,7 +263,7 @@ if __name__ == "__main__":
                         default=None,
                         help="Output length for each request. Overrides the "
                         "output length from the dataset.")
-    parser.add_argument("--model", type=str, default="facebook/opt-125m")
+    parser.add_argument("--model", type=str, default="/root/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9")
     parser.add_argument("--tokenizer", type=str, default=None)
     parser.add_argument('--quantization',
                         '-q',

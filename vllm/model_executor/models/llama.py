@@ -48,7 +48,9 @@ from vllm.model_executor.weight_utils import (default_weight_loader,
                                               kv_cache_scales_loader)
 from vllm.sequence import SamplerOutput
 from vllm.utils import is_hip
+from vllm.logger import init_logger
 
+logger = init_logger(__name__)
 
 class LlamaMLP(nn.Module):
 
@@ -153,6 +155,7 @@ class LlamaAttention(nn.Module):
                               self.scaling,
                               num_kv_heads=self.num_kv_heads,
                               sliding_window=sliding_window)
+        # print("initialized LlamaAttention")
 
     def forward(
         self,
@@ -350,6 +353,8 @@ class LlamaForCausalLM(nn.Module):
         self.logits_processor = LogitsProcessor(self.unpadded_vocab_size,
                                                 config.vocab_size, logit_scale)
         self.sampler = Sampler()
+        logger.info("Initialized LlamaForCausalLM")
+
 
     def forward(
         self,

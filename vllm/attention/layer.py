@@ -7,7 +7,9 @@ import torch.nn as nn
 from vllm.attention.backends.abstract import (AttentionMetadata,
                                               AttentionMetadataPerStage)
 from vllm.attention.selector import get_attn_backend
+from vllm.logger import init_logger
 
+logger = init_logger(__name__)
 
 class Attention(nn.Module):
     """Attention layer.
@@ -35,6 +37,8 @@ class Attention(nn.Module):
         impl_cls = self.backend.get_impl_cls()
         self.impl = impl_cls(num_heads, head_size, scale, num_kv_heads,
                              alibi_slopes, sliding_window)
+        # logger.info(f"initialize: Using {impl_cls.__name__} for attention.")
+        
 
     def forward(
         self,

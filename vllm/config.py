@@ -579,6 +579,8 @@ class SchedulerConfig:
                 self.max_num_batched_tokens = max(max_model_len, 2048)
         if enable_chunked_prefill:
             logger.info("Chunked prefill is enabled (EXPERIMENTAL).")
+            logger.info(
+                f"max_num_batched_tokens is set to {self.max_num_batched_tokens}.")
 
         self.max_num_seqs = max_num_seqs
         self.max_model_len = max_model_len

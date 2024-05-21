@@ -15,6 +15,7 @@ from vllm.attention.ops.paged_attn import (PagedAttention,
                                            PagedAttentionMetadata)
 from vllm.logger import init_logger
 
+from vllm.attention.backends.CudaStreampool import stream_pool
 logger = init_logger(__name__)
 
 
@@ -164,6 +165,8 @@ class XFormersImpl(AttentionImpl):
             raise ValueError(
                 f"Head size {head_size} is not supported by PagedAttention. "
                 f"Supported head sizes are: {suppored_head_sizes}.")
+        # logger.info("initialize xfms backend")
+        self.pool = stream_pool()
 
     def forward(
         self,
@@ -218,13 +221,21 @@ class XFormersImpl(AttentionImpl):
 
         assert query.shape[0] == num_prefill_tokens
         assert decode_query.shape[0] == num_decode_tokens
-
+        # check if the query is for prefill and decode.
+        # if (attn_metadata.prefill_metadata and attn_metadata.decode_metadata):
+        #     stream1 = self.pool.get_stream(0)
+        #     stream2 = self.pool.get_stream(1)
+        # else:
+        #     stream1 = torch.cuda.current_stream()
+        #     stream2 = torch.cuda.current_stream()
+        # with torch.cuda.stream(stream1):
         if prefill_meta := attn_metadata.prefill_metadata:
             # Prompt run.
             if kv_cache is None or prefill_meta.block_tables.numel() == 0:
                 # normal attention.
                 # block tables are empty if the prompt does not have a cached
                 # prefix.
+                # logger.info(f"run normal attention with tokens:{num_prefill_tokens}")
                 out = self._run_memory_efficient_xformers_forward(
                     query, key, value, prefill_meta)
                 assert out.shape == output[:num_prefill_tokens].shape
@@ -234,6 +245,7 @@ class XFormersImpl(AttentionImpl):
                 # TODO(Hai) this triton kernel has regression issue (broke) to
                 # deal with different data types between KV and FP8 KV cache,
                 # to be addressed separately.
+                # logger.info(f"run paged attention with tokens:{num_prefill_tokens}")
                 out = PagedAttention.forward_prefix(
                     query,
                     key,
@@ -249,8 +261,9 @@ class XFormersImpl(AttentionImpl):
                 )
                 assert output[:num_prefill_tokens].shape == out.shape
                 output[:num_prefill_tokens] = out
-
+        # with torch.cuda.stream(stream2):
         if decode_meta := attn_metadata.decode_metadata:
+            # logger.info(f"run decode attention with tokens:{num_decode_tokens}")
             output[num_prefill_tokens:] = PagedAttention.forward_decode(
                 decode_query,
                 key_cache,
@@ -324,6 +337,9 @@ class XFormersImpl(AttentionImpl):
         if self.alibi_slopes is None:
             # Add the batch dimension.
             query = query.unsqueeze(0)
+            # logger.info(f"query shape:{query.shape}")
+            # logger.info(f"promptlens:{attn_metadata.prompt_lens}")
+            # logger.info(f"attn_bias:{attn_metadata.attn_bias[0]}")
             key = key.unsqueeze(0)
             value = value.unsqueeze(0)
             out = xops.memory_efficient_attention_forward(
@@ -342,6 +358,7 @@ class XFormersImpl(AttentionImpl):
         output = torch.empty_like(original_query)
         start = 0
         for i, prompt_len in enumerate(attn_metadata.prompt_lens):
+            
             end = start + prompt_len
             out = xops.memory_efficient_attention_forward(
                 query[None, start:end],

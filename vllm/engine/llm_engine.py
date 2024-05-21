@@ -100,7 +100,8 @@ class LLMEngine:
             f"kv_cache_dtype={cache_config.cache_dtype}, "
             f"quantization_param_path={model_config.quantization_param_path}, "
             f"device_config={device_config.device}, "
-            f"seed={model_config.seed})")
+            f"seed={model_config.seed},"
+            f"block_size = {cache_config.block_size})")
         # TODO(woosuk): Print more configs in debug mode.
 
         self.model_config = model_config
@@ -113,7 +114,7 @@ class LLMEngine:
         self.speculative_config = speculative_config
         self.tensorizer_config = tensorizer_config
         self.log_stats = log_stats
-
+        logger.info(f"initialze engine with max num batched tokens: {scheduler_config.max_num_batched_tokens}")
         self._init_tokenizer()
         self.detokenizer = Detokenizer(self.tokenizer)
         self.seq_counter = Counter()
@@ -717,7 +718,7 @@ class LLMEngine:
             >>>         break
         """
         seq_group_metadata_list, scheduler_outputs = self.scheduler.schedule()
-
+        logger.info("begin schedule")
         if not scheduler_outputs.is_empty():
             output = self.model_executor.execute_model(
                 seq_group_metadata_list, scheduler_outputs.blocks_to_swap_in,
@@ -725,7 +726,7 @@ class LLMEngine:
                 scheduler_outputs.blocks_to_copy)
         else:
             output = []
-
+        logger.info("end schedule")
         return self._process_model_outputs(output, scheduler_outputs)
 
     def do_log_stats(self) -> None:

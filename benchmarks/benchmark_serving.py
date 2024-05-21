@@ -206,13 +206,16 @@ def calculate_metrics(
             actual_output_lens.append(output_len)
             total_input += input_requests[i][1]
             if output_len > 1:
+                # print(f"Output: {outputs[i].generated_text}")
                 tpots.append(
                     (outputs[i].latency - outputs[i].ttft) / (output_len - 1))
             ttfts.append(outputs[i].ttft)
             completed += 1
         else:
             actual_output_lens.append(0)
-
+    # print(f"Total requests: {len(outputs)}")
+    # print tpots
+    # print(f"TPOTs: {tpots}")
     metrics = BenchmarkMetrics(
         completed=completed,
         total_input=total_input,
@@ -265,6 +268,7 @@ async def benchmark(
             best_of=best_of,
             use_beam_search=use_beam_search,
         )
+        # print(f"Request: {prompt}")
         tasks.append(
             asyncio.create_task(
                 request_func(request_func_input=request_func_input,
@@ -483,7 +487,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--dataset",
         type=str,
-        default=None,
+        default="/workspace/vllm/benchmarks/ShareGPT_V3_unfiltered_cleaned_split.json",
         help="Path to the ShareGPT dataset, will be deprecated in the "
         "next release.",
     )
@@ -496,12 +500,12 @@ if __name__ == "__main__":
     )
     parser.add_argument("--dataset-path",
                         type=str,
-                        default=None,
+                        default="/workspace/vllm/benchmarks/ShareGPT_V3_unfiltered_cleaned_split.json",
                         help="Path to the dataset.")
     parser.add_argument(
         "--model",
         type=str,
-        required=True,
+        default="/root/.cache/huggingface/hub/models--meta-llama--Llama-2-7b-hf/snapshots/01c7f73d771dfac7d292323805ebc428287df4f9",
         help="Name of the model.",
     )
     parser.add_argument(
@@ -521,7 +525,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--num-prompts",
         type=int,
-        default=1000,
+        default=2000,
         help="Number of prompts to process.",
     )
     parser.add_argument(
@@ -548,7 +552,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--request-rate",
         type=float,
-        default=float("inf"),
+        default=float(8),
         help="Number of requests per second. If this is inf, "
         "then all the requests are sent at time 0. "
         "Otherwise, we use Poisson process to synthesize "

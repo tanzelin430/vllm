@@ -1,0 +1,3 @@
+[submodule "libsmctrl"]
+	path = libsmctrl
+	url = https://github.com/tanzelin430/libsmctrl.git

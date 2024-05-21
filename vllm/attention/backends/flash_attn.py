@@ -15,7 +15,8 @@ from vllm.attention.backends.abstract import (AttentionBackend, AttentionImpl,
                                               AttentionMetadataPerStage)
 from vllm.attention.ops.paged_attn import (PagedAttention,
                                            PagedAttentionMetadata)
-
+from vllm.logger import init_logger
+logger = init_logger(__name__)
 
 class FlashAttentionBackend(AttentionBackend):
 
@@ -155,6 +156,8 @@ class FlashAttentionImpl(AttentionImpl):
             raise ValueError(
                 f"Head size {head_size} is not supported by PagedAttention. "
                 f"Supported head sizes are: {suppored_head_sizes}.")
+        # print("initialize FlashAttentionImpl")
+        logger.info("initialize FlashAttentionImpl")
 
     def forward(
         self,
@@ -210,61 +213,70 @@ class FlashAttentionImpl(AttentionImpl):
 
         assert query.shape[0] == num_prefill_tokens
         assert decode_query.shape[0] == num_decode_tokens
-
-        if prefill_meta := attn_metadata.prefill_metadata:
-            # Prompt run.
-            if kv_cache is None or prefill_meta.block_tables.numel() == 0:
-                # normal attention
-                # When block_tables are not filled, it means q and k are the
-                # prompt, and they have the same length.
-                out = flash_attn_varlen_func(
-                    q=query,
-                    k=key,
-                    v=value,
-                    cu_seqlens_q=prefill_meta.seq_start_loc,
-                    cu_seqlens_k=prefill_meta.seq_start_loc,
-                    max_seqlen_q=prefill_meta.max_prompt_len,
-                    max_seqlen_k=prefill_meta.max_prompt_len,
-                    softmax_scale=self.scale,
-                    causal=True,
-                    window_size=self.sliding_window,
-                    alibi_slopes=self.alibi_slopes,
-                )
-                assert output[:num_prefill_tokens].shape == out.shape
-                output[:num_prefill_tokens] = out
-            else:
-                # prefix-enabled attention
-                # TODO(Hai) this triton kernel has regression issue (broke) to
-                # deal with different data types between KV and FP8 KV cache,
-                # to be addressed separately.
-                output[:num_prefill_tokens] = PagedAttention.forward_prefix(
-                    query,
-                    key,
-                    value,
+        if (attn_metadata.prefill_metadata and attn_metadata.decode_metadata):
+            stream1 = torch.cuda.Stream()
+            stream2 = torch.cuda.Stream()
+            logger.info("FlashAttentionImpl: Forward with prefill and decode")
+        else:
+            stream1 = torch.cuda.current_stream()
+            stream2 = torch.cuda.current_stream()
+            logger.info("FlashAttentionImpl: Forward without prefill and decode")
+        with torch.cuda.stream(stream1):
+            if prefill_meta := attn_metadata.prefill_metadata:
+                # Prompt run.
+                if kv_cache is None or prefill_meta.block_tables.numel() == 0:
+                    # normal attention
+                    # When block_tables are not filled, it means q and k are the
+                    # prompt, and they have the same length.
+                    out = flash_attn_varlen_func(
+                        q=query,
+                        k=key,
+                        v=value,
+                        cu_seqlens_q=prefill_meta.seq_start_loc,
+                        cu_seqlens_k=prefill_meta.seq_start_loc,
+                        max_seqlen_q=prefill_meta.max_prompt_len,
+                        max_seqlen_k=prefill_meta.max_prompt_len,
+                        softmax_scale=self.scale,
+                        causal=True,
+                        window_size=self.sliding_window,
+                        alibi_slopes=self.alibi_slopes,
+                    )
+                    assert output[:num_prefill_tokens].shape == out.shape
+                    output[:num_prefill_tokens] = out
+                else:
+                    # prefix-enabled attention
+                    # TODO(Hai) this triton kernel has regression issue (broke) to
+                    # deal with different data types between KV and FP8 KV cache,
+                    # to be addressed separately.
+                    output[:num_prefill_tokens] = PagedAttention.forward_prefix(
+                        query,
+                        key,
+                        value,
+                        key_cache,
+                        value_cache,
+                        prefill_meta.block_tables,
+                        prefill_meta.subquery_start_loc,
+                        prefill_meta.prompt_lens_tensor,
+                        prefill_meta.context_lens,
+                        prefill_meta.max_subquery_len,
+                        self.alibi_slopes,
+                    )
+        with torch.cuda.stream(stream2):
+            if decode_meta := attn_metadata.decode_metadata:
+                # Decoding run.
+                output[num_prefill_tokens:] = PagedAttention.forward_decode(
+                    decode_query,
                     key_cache,
                     value_cache,
-                    prefill_meta.block_tables,
-                    prefill_meta.subquery_start_loc,
-                    prefill_meta.prompt_lens_tensor,
-                    prefill_meta.context_lens,
-                    prefill_meta.max_subquery_len,
+                    decode_meta.block_tables,
+                    decode_meta.context_lens,
+                    decode_meta.max_context_len,
+                    attn_metadata.kv_cache_dtype,
+                    self.num_kv_heads,
+                    self.scale,
                     self.alibi_slopes,
+                    kv_scale,
                 )
-        if decode_meta := attn_metadata.decode_metadata:
-            # Decoding run.
-            output[num_prefill_tokens:] = PagedAttention.forward_decode(
-                decode_query,
-                key_cache,
-                value_cache,
-                decode_meta.block_tables,
-                decode_meta.context_lens,
-                decode_meta.max_context_len,
-                attn_metadata.kv_cache_dtype,
-                self.num_kv_heads,
-                self.scale,
-                self.alibi_slopes,
-                kv_scale,
-            )
 
         # Reshape the output tensor.
         return output.view(num_tokens, hidden_size)
